@@ -1,0 +1,145 @@
+.landing {
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Technology/full%20page/1.jpg);
+  /*     position: fixed; */
+  /*     top: 0px; */
+  /*     left: 0px; */
+  width: 100vw;
+  height: calc( 100vh - 256px);
+  overflow: hidden;
+  /*   pointer-events: none; */
+  /*     margin-left: -317.834px; */
+  /*     margin-top: 0px; */
+  visibility: visible;
+  display: flex;
+}
+
+.landing-text-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+}
+
+.landing-text {
+  text-align: center;
+  width: 300px;
+}
+
+.landing-text-h2 {
+  margin: 0;
+}
+
+.mdc-button {
+  margin: 0 4px;
+}
+
+.flex-center {
+  background: rgba(0, 0, 0, 0.74);
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.page-home section {
+  margin: 16px 0 0 0;
+}
+
+h3 {
+  margin: 0 0 8px 0;
+}
+
+.section-music .mdc-grid-tile {
+  width: 44%;
+  margin: 8px 0;
+  padding: 0 8px;
+}
+
+.section-videos .mdc-grid-tile {
+  width: 100%;
+  margin: 8px 0;
+}
+
+.mdc-grid-tile__secondary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*   width: 100%; */
+}
+
+.mdc-grid-list .mdc-grid-tile__secondary {
+  left: 0;
+  width: 100%;
+}
+
+.events span.mdc-list-item__end-detail {
+  width: auto;
+}
+
+@media (max-width: 839px) and (min-width: 480px) {
+  .section-music .mdc-grid-tile {
+    width: 29%;
+  }
+  .section-videos .mdc-grid-tile {
+    width: 49%;
+  }
+}
+
+@media (min-width: 840px) {
+  .section-music .mdc-grid-tile {
+    width: 18%;
+  }
+  .section-videos .mdc-grid-tile {}
+}
+
+@media (min-width: 840px) {
+  ul.mdc-grid-list__tiles {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .section-music .mdc-grid-tile {
+    width: 22%;
+  }
+  .section-videos .mdc-grid-tile ._old {
+    width: 14%;
+  }
+  .section-videos .mdc-grid-tile {
+    width: 29%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-music .mdc-grid-tile {
+    width: 16%;
+  }
+  .section-videos .mdc-grid-tile {
+    width: 21%;
+  }
+}
+
+
+@media (min-width: 1440px){
+  
+   .section-music .mdc-grid-tile {
+    width: 10%;
+  }
+  .section-videos .mdc-grid-tile {
+    width: 15%;
+  }
+  
+}

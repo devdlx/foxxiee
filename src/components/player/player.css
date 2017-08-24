@@ -1,0 +1,111 @@
+.playerContainer {
+  background: #D32337;
+  /*padding: 4px 16px;*/
+}
+
+.player-meta-data {
+  padding: 4px 16px;
+}
+
+.player-track-title {
+  color: #EED991;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  /*height: 20px;*/
+  /*margin-bottom: 4px;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.player-track-user {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  /*height: 20px;*/
+  margin-bottom: 0
+}
+
+.buttons-wrapper {
+  position: absolute;
+  right: 16px;
+  /*margin-top: 36px;*/
+  /*height: 30px;*/
+}
+
+.player-play-button {
+  margin-right: 8px;
+}
+
+.player-next-button {}
+
+.player-play-button, .player-next-button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 36px;
+  width: 36px;
+}
+
+.player-play-button:hover, .player-next-button:hover, .player-play-button:focus, .player-next-button:focus {
+  background-color: white;
+  color: black;
+}
+
+.player-play-button .anticon, .player-next-button .anticon {
+  font-size: 16px;
+}
+
+menuContainer {
+  display: flex;
+  flexDirection: row;
+  padding: 8;
+  justifyContent: space-around;
+  alignItems: center;
+  maxWidth: 670;
+  width: "100%"
+}
+
+menuWrapper {
+  display: flex;
+  flexDirection: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backgroundColor: #EED991;
+  justifyContent: center
+}
+
+menuItem {
+  display: flex;
+  color: #D32337;
+  background: transparent;
+  border: none;
+  textDecoration: none
+}
+
+redColor: {
+  color: #D32337
+}
+
+metaContainer {
+  display: flex;
+  flex: 2;
+  paddingLeft: 16;
+  paddingRight: 16;
+  paddingTop: 8;
+  paddingBottom: 12;
+  flexDirection: column;
+  width: 76%
+}
+
+controlsContainer {
+  display: flex;
+  flex: 1;
+  marginRight: 12;
+  marginLeft: 12;
+  alignItems: center
+}

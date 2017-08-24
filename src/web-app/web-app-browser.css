@@ -1,0 +1,19 @@
+body{
+  padding:0;
+  margin:0;
+}
+
+:root2 {
+  --mdc-theme-primary: #d60000;
+  --mdc-theme-accent	: #FBC02D;
+}
+/*  red #d60000
+ gold #FBC02D */
+
+
+.page.web-app-browser {
+  display: flex;
+  --mdc-theme-primary: #d60000;
+  --mdc-theme-accent	: #FBC02D;
+  
+}

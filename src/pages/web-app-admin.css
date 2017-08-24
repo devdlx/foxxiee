@@ -1,0 +1,55 @@
+/* Ensure layout covers the entire screen. */
+
+:root2 {
+  --mdc-theme-primary: #212121;
+  --mdc-theme-accent	: #64dd17;
+  --mdc-theme-background : #424242;
+}
+/*  green #d60000
+ darkgrey #FBC02D */
+
+html {
+  height: 100vh;
+}
+
+
+body{
+  padding:0;
+  margin:0;
+}
+
+
+
+.page.admin-page {
+  display: flex;
+  --mdc-theme-primary: #212121;
+  --mdc-theme-accent	: #64dd17;
+}
+
+
+/* Place drawer and content side by side. */
+
+.web-admin-body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* Stack toolbar and main on top of each other. */
+
+.web-admin-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.web-admin-main {
+  padding-left: 16px;
+}
