@@ -15,5 +15,8 @@ body{
   display: flex;
   --mdc-theme-primary: #d60000;
   --mdc-theme-accent	: #FBC02D;
-  
+}
+
+.page.web-app-browser main{
+  padding-bottom: 72px;
 }

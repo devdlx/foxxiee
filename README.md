@@ -1,15 +1,47 @@
-# MDC-Web Checkbox Example - React
+# Foxxiee
 
-This folder contains an example of using mdc-checkbox within React.
+## Admin
 
-It is bootstrapped with [create-react-app](https://github.com/facebookincubator/create-react-app)
+Login
+- Google
+- Facebook
+- Soundcloud
 
-## Setup
+Dashboard
 
-1. Run `npm install` within this folder
-2. Run `npm start` to start the demo server
-3. If your browser has not been opened automatically, then navigate to the location written on the console to view the demo
+Youtube
 
-## Notes
+Soundcloud
 
-The checkbox wrapper is implemented within `src/Checkbox.js`, which is annotated with comments. There are also simple wrapper components for both the checkbox wrapper classes and the checkbox label (both implemented as pure functions).
+Eventbrite
+
+
+## Web
+
+Home
+- Music grid
+- Video grid
+- Events list
+
+List View
+- Music grid
+- Video grid
+- Events list
+
+Single View 
+- Music
+- Video
+- Events
+-- Purchase
+
+Drawer
+- Permanent
+- temporary
+
+Player
+- static bottom
+- Mobx
+
+
+
+

@@ -19,6 +19,7 @@ import DrawerDesktop  from "../components/drawer-desktop";
 import DrawerMobile  from "../components/drawer-mobile";
 import WebAppAdminDrawerMenu  from "../components/web-app-admin-drawer-menu";
 
+import Player  from "../components/player";
 
 import './web-app-browser.css'
 export default class WebApp extends PureComponent {
@@ -111,7 +112,7 @@ componentWillUpdate(nextProps, nextState) {
       
       
       
-      <main className="mdc-toolbar-fixed-adjust" style={{paddingTop:0}} style={{marginLeft: !isMobile ? 240 : 0}}>
+      <main className="mdc-toolbar-fixed-adjust" style={{paddingTop:0}, {paddingBottom:36}, {marginLeft: !isMobile ? 240 : 0}}>
         <Router>
           <div>    
             <Route exact strict path="/" component={Home}/>
@@ -121,6 +122,8 @@ componentWillUpdate(nextProps, nextState) {
         </Router>
       </main>
 
+
+      <Player />
 
 
       </div>

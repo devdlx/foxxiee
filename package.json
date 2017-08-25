@@ -1,16 +1,13 @@
 {
-  "name": "mdc-web-example-react",
-  "private": true,
-  "version": "1.0.0",
-  "description": "MDC-Web Framework Integration Example for React",
+  "name": "foxxiee",
+  "private": false,
+  "version": "0.0.4",
+  "description": "A Certified Royals Live Product",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "next": "next",
-    "nextb": "next build",
-    "nexts": "next start"
+    "eject": "react-scripts eject"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -38,7 +35,8 @@
     "react-player": "^0.20.0",
     "react-responsive": "^1.3.4",
     "react-router": "^4.1.2",
-    "react-router-dom": "^4.2.0"
+    "react-router-dom": "^4.2.0",
+    "react-soundplayer": "^0.3.6"
   },
   "plugins": [
     "transform-decorators-legacy",

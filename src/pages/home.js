@@ -124,6 +124,7 @@ renderGridItemSoundcloud(track){
  const      title = track.title 
  const linkTo = `{/page/music/${track.id}`
  const pic = track.user.avatar_url
+ const subtitle = track.user.username
 
   return(
   <li className="mdc-grid-tile" key={key}>
@@ -131,8 +132,8 @@ renderGridItemSoundcloud(track){
           <img className="mdc-grid-tile__primary-content" src={pic} />
         </div>
           <span className="mdc-grid-tile__secondary">
-          <span className="mdc-grid-tile__title">Single Very Long Grid Title Line</span>
-          <span className="mdc-grid-tile__support-text">Support text</span>
+          <span className="mdc-grid-tile__title">{title}</span>
+          <span className="mdc-grid-tile__support-text">{subtitle}</span>
         </span>
       </li>
   )

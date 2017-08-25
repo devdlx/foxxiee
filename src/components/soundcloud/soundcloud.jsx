@@ -9,7 +9,8 @@ export const config = {
 
   client_key: '7ce7c8ce794f080121b96a32aeff64f4',
   secret_key: 'f8bea6c179387b518fed1f4572020093',
-  username: 'sizzur_dlx'
+  username2: 'sizzur_dlx',
+  username:'ahkiki_la_foxxiee'
 };
 
 const SoundCloud = {
@@ -59,14 +60,16 @@ const fetchSoundcloud = (returnCount = 0) => {
     const scUserTracksURI = `https://api.soundcloud.com/users/${data.id}/tracks${clientIdURI}`;
     return window.fetch(scUserTracksURI, sentData);
   }).then((resp) => resp.json()).then((tracks) => {
-    // console.log(tracks);
+//     console.log(tracks[0]);
     if (tracks.length) {
+      
+      tracks.forEach(function(item, index) {
+  tracks[index] = {...item, key: item.id};
+});
+//           tracks[i].key = tracks[i].id;
+        
 
       if (returnCount) {
-        for (var i = 0; i < returnCount; i++) {
-          tracks[i].key = tracks[i].id;
-          // console.log(tracks[i].id);
-        }
         return tracks.slice(0, returnCount);
       }
 
