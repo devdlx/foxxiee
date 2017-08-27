@@ -9,6 +9,7 @@ import {
   Link
 } from 'react-router-dom'
 
+
 // Custom Components
 // Drawer
 import DrawerDesktop  from "../components/drawer-desktop";
@@ -17,6 +18,9 @@ import WebAppAdminDrawerMenu  from "../components/web-app-admin-drawer-menu";
 
 // import Home from '../pages/home';
 import AdminDashboard from '../pages/admin-dashboard';
+
+// import {User} from '../store';
+
 
 // Admin Page CSS
 import './web-app-admin.css'
@@ -29,6 +33,8 @@ export default class WebAppAdmin extends PureComponent {
 
 componentDidMount(){
   this.handleWindowSizeChange();
+   console.log(this.user)
+    console.log(this.props)
 }
 
 menuPress(e){
@@ -67,8 +73,11 @@ componentWillUpdate(nextProps, nextState) {
 
   render() {
     const {isMobile} = this.state
+//     console.log(User)
+      
+        
     return (
-     <div className="page admin-page mdc-theme--dark">
+     <div className="page admin-page mdc-toolbar-fixed-adjust mdc-theme--dark ">
       
       {isMobile && 
       
@@ -88,8 +97,8 @@ componentWillUpdate(nextProps, nextState) {
       
       }
       
-        <div className="web-admin-content">
-            <header className="mdc-toolbar mdc-elevation--z4">
+        <div className="web-admin-content" style={{marginLeft: !isMobile ? 240 : 0, padding: '0 16px'}} >
+            <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
                <div className="mdc-toolbar__row">
                     <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
                         <button className="demo-menu material-icons mdc-toolbar__icon--menu" onClick={(e)=>this.menuPress(e)}>menu</button>
@@ -98,9 +107,9 @@ componentWillUpdate(nextProps, nextState) {
                </div>
            </header>
 
-          <main className="mdc-toolbar-fixed-adjust2" style={{paddingTop:0}} style={{marginLeft: !isMobile ? 240 : 0, padding: '0 16px'}}>
+          <main className="" >
             <Router>
-              <div>    
+              <div>
                 <Route component={AdminDashboard}/>
               </div>
             </Router>

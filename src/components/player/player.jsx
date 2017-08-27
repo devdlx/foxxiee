@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 // import {Link} from 'react-router'
 // import Headroom from 'react-headroom'
@@ -72,15 +73,11 @@ class PlayerContainer extends React.Component {
 
 class Player extends React.Component {
 
-  constructor() {
-    super()
-
-    this.state = {
+state = {
       activeIndex: -1,
       clientId: Soundcloud.client_key,
       tracks: []
-    };
-  }
+    }
 
   componentDidMount() {
     let header = new Headers({'Access-Control-Allow-Origin': '*'});

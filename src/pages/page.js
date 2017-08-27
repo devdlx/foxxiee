@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
@@ -60,7 +61,7 @@ class Page extends PureComponent {
   renderMedia() {
     const {items} = this.state
     return (
-      <div >
+      <div>
         {items.map((track, i) => <MediaCard key={track.videoId} itemId={track.videoId} title={track.title} linkTo={`/page/media/${track.videoId}`} pic={track.thumbnail}/>)}
       </div>
     )

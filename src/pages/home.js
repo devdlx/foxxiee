@@ -10,7 +10,7 @@ import {
 import MediaQuery from 'react-responsive';
 
 import * as eventbrite from '../components/eventbrite/eventbrite';
-import * as soundcloud from '../components/soundcloud/soundcloud';
+import {Soundcloud} from '../components/soundcloud/soundcloud';
 import * as youtube from '../components/youtube/youtube';
 
 import './home.css'
@@ -29,7 +29,7 @@ componentWillMount() {
       this.setState({events})
     });
 
-    soundcloud.fetchSoundcloud(4).then((soundcloud) => {
+    Soundcloud.fetchTracksByUser(4).then((soundcloud) => {
       // console.log('fetchSoundcloud() ', soundcloud);
       this.setState({soundcloud})
     });
@@ -104,7 +104,7 @@ const pic= video.thumbnail
 // console.log(video)
 
   return(
-  <Link className="mdc-grid-tile" key={key} to={linkTo}>
+  <li className="mdc-grid-tile" key={key} to={linkTo}>
         <div className="mdc-grid-tile__primary">
           <img className="mdc-grid-tile__primary-content" src={pic} />
         </div>
@@ -112,7 +112,7 @@ const pic= video.thumbnail
           <span className="mdc-grid-tile__title">{title}</span>
           <span className="mdc-grid-tile__support-text">{video.channelTitle}</span>
         </span>
-      </Link>
+      </li>
   )
 }
 
@@ -122,15 +122,20 @@ renderGridItemSoundcloud(track){
  const key = track.id
  const      itemId = track.id
  const      title = track.title 
- const linkTo = `{/page/music/${track.id}`
+ const linkTo = `/page/music/${track.id}`
  const pic = track.user.avatar_url
  const subtitle = track.user.username
 
   return(
-  <li className="mdc-grid-tile" key={key}>
+  <li to={linkTo} className="mdc-grid-tile" key={key}>
         <div className="mdc-grid-tile__primary">
           <img className="mdc-grid-tile__primary-content" src={pic} />
-        </div>
+            <button className="mdc-fab material-icons media-button" aria-label="Favorite">
+              <span className="mdc-fab__icon">
+                play_arrow
+              </span>
+            </button>        
+          </div>
           <span className="mdc-grid-tile__secondary">
           <span className="mdc-grid-tile__title">{title}</span>
           <span className="mdc-grid-tile__support-text">{subtitle}</span>
@@ -193,7 +198,7 @@ render() {
             <h3>Videos</h3>
 
 
-            <div className="mdc-grid-list mdc-grid-list--twoline-caption mdc-grid-list--tile-aspect-16x9">
+            <div className="mdc-grid-list mdc-grid-list--twoline-caption mdc-grid-list--tile-aspect-3x2">
               <ul className="mdc-grid-list__tiles">
                   {this.state.youtube.map((video, i) => this.renderGridItemYoutube(video))}
               </ul>

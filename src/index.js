@@ -18,5 +18,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WebAppRouter from './web-app/web-app-router';
+import {musicItems, User} from './store';
 
-ReactDOM.render(<WebAppRouter />, document.getElementById('root'));
+ReactDOM.render(<WebAppRouter user={User}/>, document.getElementById('root'));

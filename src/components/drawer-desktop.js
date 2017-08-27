@@ -8,6 +8,8 @@ import React, {PureComponent} from 'react';
 import {MDCPersistentDrawer} from "@material/drawer/dist/mdc.drawer";
 
 
+import './drawer-desktop.css';
+
 export default class DrawerDesktop extends PureComponent {
   state = {
     
@@ -26,7 +28,7 @@ componentDidMount(){
 
   render() {
     return (
-      <aside className="mdc-persistent-drawer mdc-toolbar-fixed-adjust" ref={(drawer) => {this.desktopdrawerref = drawer}} style={this.props.style}>
+      <aside className="mdc-persistent-drawer" ref={(drawer) => {this.desktopdrawerref = drawer}} style={this.props.style}>
        <nav className="mdc-persistent-drawer__drawer">
          
          

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   extendObservable,
   computed,
@@ -6,6 +7,8 @@ import {
 } from 'mobx'
 
 import firebase from 'firebase'
+
+import PlayerStore from './player'
 
 const config = {
   apiKey: "AIzaSyByzKb-Cu489zNHQZkuhfoOYr1oIelCr34",
@@ -30,7 +33,7 @@ const FB = {
   user
 }
 
-class MusicItems {
+class MusicItemsFirebase {
 
 
   constructor() {
@@ -40,7 +43,7 @@ class MusicItems {
 
   }
 
-   get items() {
+  get items() {
     return toJS(this.items);
   }
 
@@ -61,7 +64,84 @@ class MusicItems {
 
 }
 
-const musicItems = new MusicItems();
+const musicItems = new MusicItemsFirebase();
+
+
+
+
+
+
+
+
+
+class UserFirebase {
+
+  waiting = true;
+
+  constructor() {
+    //     FB.user.on('value', (_child) => {
+    //       console.log(_child.val())
+    //     })
+//     console.log('User Store')
+    extendObservable(this, {
+      isAuthenticated: this.isAuthenticated
+    });
+  }
+
+
+
+
+  signIn() {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+  }
+
+  get profile() {
+    return toJS(this.user);
+  }
+
+  signOut() {
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
+  update = (id, data) => {
+    FB.user.update({
+      [id]: data
+    })
+  }
+
+  del = (id) => {
+    FB.user.child(id).remove();
+  }
+
+}
+const User = new UserFirebase();
+// console.log("User - ", User)
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in.
+//     console.log(user)
+  } else {
+    // No user is signed in.
+//     console.log('no user', user)
+//     console.log(User.waiting)
+  }
+  User.waiting = false
+  User.isAuthenticated = true;
+})
+
 export {
-  musicItems
+  User, musicItems, PlayerStore
 };

@@ -40,7 +40,7 @@ Drawer
 
 Player
 - static bottom
-- Mobx
+- Mobx (75%)
 
 
 

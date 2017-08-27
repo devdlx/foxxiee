@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as Fetch from 'isomorphic-fetch';
 
 const Youtube = {
@@ -27,8 +28,8 @@ export const fetchYoutube = (returnCount = 0) => {
       if (data.items.hasOwnProperty(video)) {
         // console.log(data.items[video].snippet);
         data.items[video].snippet.videoId = data.items[video].snippet.resourceId.videoId;
-        data.items[video].snippet.thumbnail = data.items[video].snippet.thumbnails.default.url;
-        // console.log(data.items[video].snippet.thumbnails.default.url);
+        data.items[video].snippet.thumbnail = data.items[video].snippet.thumbnails.medium.url || data.items[video].snippet.thumbnails.default.url;
+//         console.log(data.items[video].snippet.thumbnails);
         items.push(data.items[video].snippet)
       }
     }

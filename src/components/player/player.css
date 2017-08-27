@@ -16,6 +16,10 @@
     margin-right: 12px;
   }
 
+.react-player div{
+  width:100%;
+}
+
   button.material-icons.mdc-toolbar__icon.mdc-button.mdc-button {
     line-height: 0;
     min-width: auto;

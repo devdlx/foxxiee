@@ -1,22 +1,37 @@
-body{
-  padding:0;
-  margin:0;
+html {
+  height: 100vh;
 }
 
-:root2 {
-  --mdc-theme-primary: #d60000;
-  --mdc-theme-accent	: #FBC02D;
+body {
+  padding: 0;
+  margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+
 /*  red #d60000
  gold #FBC02D */
 
+@media (max-width: 959px) and (orientation: landscape) {
+  .mdc-toolbar-fixed-adjust {
+    margin-top: 56px;
+  }
+}
 
 .page.web-app-browser {
   display: flex;
   --mdc-theme-primary: #d60000;
-  --mdc-theme-accent	: #FBC02D;
+  --mdc-theme-accent: #FBC02D;
 }
 
-.page.web-app-browser main{
+.page.web-app-browser main {
   padding-bottom: 72px;
 }
+
+/* aside {
+  height: calc( 100vh - 104px);
+  overflow-y: auto;
+} */

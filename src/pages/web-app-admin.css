@@ -1,29 +1,20 @@
 /* Ensure layout covers the entire screen. */
 
-:root2 {
+/* :root {
   --mdc-theme-primary: #212121;
-  --mdc-theme-accent	: #64dd17;
-  --mdc-theme-background : #424242;
+  --mdc-theme-accent: #64dd17;
+  --mdc-theme-background: #424242;
 }
+ */
+
 /*  green #d60000
  darkgrey #FBC02D */
-
-html {
-  height: 100vh;
-}
-
-
-body{
-  padding:0;
-  margin:0;
-}
-
 
 
 .page.admin-page {
   display: flex;
   --mdc-theme-primary: #212121;
-  --mdc-theme-accent	: #64dd17;
+  --mdc-theme-accent: #64dd17;
 }
 
 
