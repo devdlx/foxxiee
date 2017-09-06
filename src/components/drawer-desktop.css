@@ -1,3 +1,21 @@
-.mdc-persistent-drawer__drawer{
-  display: flex;
+.mdc-persistent-drawer{
+      display: flex;
+    overflow: hidden;
+  width: auto;
+  height:100vh;
 }
+
+
+.mdc-persistent-drawer__drawer{
+/*   display: flex; */
+/*   height: calc( 100vh - 56px ); */
+  transform: translateX(0);
+}
+
+.mdc-list-group{
+  overflow-y: auto;
+  padding-bottom: 76px;
+}
+
+
+

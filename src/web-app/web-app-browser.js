@@ -1,8 +1,16 @@
 /* eslint-disable */
 
-import React, {PureComponent, PropTypes} from 'react';
+import React, {
+  PureComponent,
+  PropTypes
+} from 'react';
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom'
 
 import Home from '../pages/home';
 import Page from '../pages/page';
@@ -10,16 +18,22 @@ import Detail from '../pages/detail';
 // import Blog from '../pages/blog';
 import MediaQuery from 'react-responsive';
 
-import {observer} from "mobx-react";
+import {
+  observer
+} from "mobx-react";
 
 
 import DrawerDesktop from "../components/drawer-desktop";
 import DrawerMobile from "../components/drawer-mobile";
-import WebAppAdminDrawerMenu from "../components/web-app-admin-drawer-menu";
+import WebAppBrowserDrawerMenu from "../components/web-app-browser-drawer-menu";
 
 import Player from "../components/player";
 
-import {musicItems, User, PlayerStore} from '../store';
+import {
+  musicItems,
+  User,
+  PlayerStore
+} from '../store';
 
 
 import './web-app-browser.css';
@@ -32,7 +46,7 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
 
   componentDidMount() {
     this.handleWindowSizeChange();
-//   console.log('WebApp: ',this.props)
+    //   console.log('WebApp: ',this.props)
   }
 
   menuPress(e) {
@@ -56,7 +70,9 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
     //   this.setState({ width: window.innerWidth });
     const isMobile = window.innerWidth <= 767;
     //   console.log(isMobile)
-    this.setState({isMobile})
+    this.setState({
+      isMobile
+    })
     //   const
     //   this.drawer.change class = ''
   }
@@ -70,7 +86,10 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
   }
 
   render() {
-    const {isMobile} = this.state
+    const {
+      isMobile
+    } = this.state
+    
     return (
 
       <div className="page web-app-browser mdc-toolbar-fixed-adjust">
@@ -92,7 +111,7 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
         {isMobile && <DrawerMobile ref={(drawer) => {
           this.drawer = drawer;
         }}>
-          <WebAppAdminDrawerMenu/>
+          <WebAppBrowserDrawerMenu  {...this.props} />
         </DrawerMobile>
 }
 
@@ -101,7 +120,7 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
         }} style={{
           position: 'fixed'
         }}>
-          <WebAppAdminDrawerMenu/>
+          <WebAppBrowserDrawerMenu  {...this.props} />
         </DrawerDesktop>
 }
 
@@ -114,19 +133,22 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
             ? 240
             : 0
         }}>
-          <Router>
-            <div>
-              <Route exact strict path="/" component={Home}/>
-              <Route exact strict path="/page/:page" component={Page}/>
+
+            <Switch>
               <Route exact strict path="/page/:page/:itemId" component={Detail}/>
-            </div>
-          </Router>
+
+              <Route exact strict path="/page/:page" component={Page}/>
+
+              <Route exact strict path="/" component={Home}/>
+
+            </Switch>
         </main>
 
         <Player player={PlayerStore}/>
 
       </div>
     );
+
   }
 
 })

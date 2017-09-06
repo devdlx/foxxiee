@@ -38,7 +38,6 @@ componentDidMount(){
         Header content goes here
       </div>
     </header>
-
       {this.props.children}
   </nav>
 

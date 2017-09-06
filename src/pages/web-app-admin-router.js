@@ -6,7 +6,7 @@ import React, {PureComponent} from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link, Switch
 } from 'react-router-dom'
 
 
@@ -16,7 +16,7 @@ import DrawerDesktop  from "../components/drawer-desktop";
 import DrawerMobile  from "../components/drawer-mobile";
 import WebAppAdminDrawerMenu  from "../components/web-app-admin-drawer-menu";
 
-// import Home from '../pages/home';
+import Page from '../pages/page';
 import AdminDashboard from '../pages/admin-dashboard';
 
 // import {User} from '../store';
@@ -24,6 +24,17 @@ import AdminDashboard from '../pages/admin-dashboard';
 
 // Admin Page CSS
 import './web-app-admin.css'
+
+
+const PlugRoute =  ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+      <div><Component {...props}/></div>
+    )
+  }/>
+)
+
+
+
 
 export default class WebAppAdmin extends PureComponent {
   state = {
@@ -73,7 +84,7 @@ componentWillUpdate(nextProps, nextState) {
 
   render() {
     const {isMobile} = this.state
-//     console.log(User)
+    console.log(this.props)
       
         
     return (
@@ -82,7 +93,7 @@ componentWillUpdate(nextProps, nextState) {
       {isMobile && 
       
         <DrawerMobile ref={(drawer) => { this.drawer = drawer; }} >
-          <WebAppAdminDrawerMenu />
+          <WebAppAdminDrawerMenu {...this.props}  />
         </DrawerMobile>
       
       }
@@ -91,8 +102,10 @@ componentWillUpdate(nextProps, nextState) {
       
       {!isMobile && 
       
-        <DrawerDesktop ref={(drawer) => { this.drawer = drawer; }} style={{position:'absolute'}}>
-          <WebAppAdminDrawerMenu />
+        <DrawerDesktop ref={(drawer) => { this.drawer = drawer; }}  style={{
+          position: 'fixed'
+        }}>
+          <WebAppAdminDrawerMenu {...this.props} />
         </DrawerDesktop>
       
       }
@@ -108,11 +121,13 @@ componentWillUpdate(nextProps, nextState) {
            </header>
 
           <main className="" >
-            <Router>
-              <div>
-                <Route component={AdminDashboard}/>
-              </div>
-            </Router>
+
+              <Switch>
+                <Route exact strict path="/admin/pages" component={Page}/>
+                <PlugRoute path="/admin/plugins/:Component" />
+                <Route exact strict path="/admin" component={AdminDashboard}/>  
+              </Switch>
+
           </main>
         </div>
     </div>
@@ -121,3 +136,6 @@ componentWillUpdate(nextProps, nextState) {
 
 
 }
+
+
+

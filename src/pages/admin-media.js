@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react';
 import Dropzone from 'react-dropzone'
 
 import {User, Storage} from '../store'
-export default class Dashboard extends PureComponent {
+export default class AdminMedia extends PureComponent {
 
   state = {
     user : User
@@ -23,7 +23,7 @@ uploadItem(e){
         
     return (
       <div className="page admin-dashboard ">
-        <h1 className="mdc-typography--display1">Dashboard {this.state.user.isAuthenticated}</h1>
+        <h1 className="mdc-typography--display1">AdminMedia {this.state.user.isAuthenticated}</h1>
       
       <form id="image-form" action="">
             <input id="mediaCapture" type="file" accept="*" ref={(input) => { this.fileInput = input; }}  onChange={(event)=> { console.log(this)}} />

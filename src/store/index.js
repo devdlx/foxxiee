@@ -9,6 +9,8 @@ import {
 import firebase from 'firebase'
 
 import PlayerStore from './player'
+import StorageStore from './storage'
+
 
 const config = {
   apiKey: "AIzaSyByzKb-Cu489zNHQZkuhfoOYr1oIelCr34",
@@ -25,6 +27,8 @@ const root = firebase.database().ref()
 const items = firebase.database().ref('items/music')
 const settings = firebase.database().ref('settings')
 const user = firebase.database().ref('user')
+
+const storageRef = firebase.storage().ref();
 
 const FB = {
   root,
@@ -142,6 +146,8 @@ firebase.auth().onAuthStateChanged((user) => {
   User.isAuthenticated = true;
 })
 
+const Storage = new StorageStore(firebase)
+
 export {
-  User, musicItems, PlayerStore
+  User, musicItems, PlayerStore, Storage
 };

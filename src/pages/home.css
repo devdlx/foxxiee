@@ -69,15 +69,21 @@ h3 {
   position: absolute;
 }
 
+.mdc-grid-tile__innerWrapper{
+ padding:12px; 
+}
+
+.page .mdc-grid-tile{
+  padding:0;
+  margin:0;
+}
+
 .section-music .mdc-grid-tile {
-  width: 47%;
-  margin: 8px 0;
-  padding: 0 4px;
+  width: 50%;
 }
 
 .section-videos .mdc-grid-tile {
   width: 100%;
-  margin: 8px 2px;
 }
 
 .mdc-grid-tile__secondary {
@@ -98,16 +104,16 @@ h3 {
 
 @media (max-width: 839px) and (min-width: 480px) {
   .section-music .mdc-grid-tile {
-    width: 29%;
+    width: 33%;
   }
   .section-videos .mdc-grid-tile {
-    width: 48%;
+    width: 50%;
   }
 }
 
 @media (min-width: 840px) {
   .section-music .mdc-grid-tile {
-    width: 18%;
+    width: 20%;
   }
   .section-videos .mdc-grid-tile {}
 }
@@ -121,22 +127,22 @@ h3 {
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
   .section-music .mdc-grid-tile {
-    width: 22%;
+    width: 20%;
   }
   .section-videos .mdc-grid-tile ._old {
-    width: 14%;
+    width: 15%;
   }
   .section-videos .mdc-grid-tile {
-    width: 29%;
+    width: 33%;
   }
 }
 
 @media (min-width: 1280px) {
   .section-music .mdc-grid-tile {
-    width: 16%;
+    width: 15%;
   }
   .section-videos .mdc-grid-tile {
-    width: 21%;
+    width: 20%;
   }
 }
 
@@ -146,5 +152,85 @@ h3 {
   }
   .section-videos .mdc-grid-tile {
     width: 15%;
+  }
+}
+
+
+
+
+
+
+
+
+.i-amp-video-eq {
+  align-items: flex-end;
+  display: flex;
+/*   position: absolute; */
+/*   right: 7px; */
+/*   bottom: 7px; */
+/*   width: 20px; */
+  height: 36px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.i-amp-video-eq .-amp-video-eq-col {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  margin-right: 1px;
+}
+
+.i-amp-video-eq .-amp-video-eq-col div {
+  animation-name: amp-video-eq-animation;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: #FAFAFA;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.-amp-video-eq-1-1 {
+  animation-duration: 0.3s;
+}
+
+.-amp-video-eq-1-2 {
+  animation-duration: 0.45s;
+}
+
+.-amp-video-eq-2-1 {
+  animation-duration: 0.5s;
+}
+
+.-amp-video-eq-2-2 {
+  animation-duration: 0.4s;
+}
+
+.-amp-video-eq-3-1 {
+  animation-duration: 0.3s;
+}
+
+.-amp-video-eq-3-2 {
+  animation-duration: 0.35s;
+}
+
+.-amp-video-eq-4-1 {
+  animation-duration: 0.4s;
+}
+
+.-amp-video-eq-4-2 {
+  animation-duration: 0.25s;
+}
+
+@keyframes amp-video-eq-animation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

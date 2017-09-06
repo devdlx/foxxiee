@@ -15,6 +15,32 @@ import * as youtube from '../components/youtube/youtube';
 
 import './home.css'
 
+
+
+const Amp = ()=>{
+  return(
+    <div className="i-amp-video-eq">
+    <div className="-amp-video-eq-col">
+      <div className="-amp-video-eq-1-1"></div>
+      <div className="-amp-video-eq-1-2"></div>
+    </div>
+    <div className="-amp-video-eq-col">
+      <div className="-amp-video-eq-2-1"></div>
+      <div className="-amp-video-eq-2-2"></div>
+    </div>
+    <div className="-amp-video-eq-col">
+      <div className="-amp-video-eq-3-1"></div>
+      <div className="-amp-video-eq-3-2"></div>
+    </div>
+  
+  </div>
+  
+  )
+  
+}
+
+
+
 export default class Home extends PureComponent {
   state = {
      events: [],
@@ -105,6 +131,7 @@ const pic= video.thumbnail
 
   return(
   <li className="mdc-grid-tile" key={key} to={linkTo}>
+         <div className="mdc-grid-tile__innerWrapper">
         <div className="mdc-grid-tile__primary">
           <img className="mdc-grid-tile__primary-content" src={pic} />
         </div>
@@ -112,6 +139,7 @@ const pic= video.thumbnail
           <span className="mdc-grid-tile__title">{title}</span>
           <span className="mdc-grid-tile__support-text">{video.channelTitle}</span>
         </span>
+        </div>
       </li>
   )
 }
@@ -128,6 +156,7 @@ renderGridItemSoundcloud(track){
 
   return(
   <li to={linkTo} className="mdc-grid-tile" key={key}>
+     <div className="mdc-grid-tile__innerWrapper">
         <div className="mdc-grid-tile__primary">
           <img className="mdc-grid-tile__primary-content" src={pic} />
             <button className="mdc-fab material-icons media-button" aria-label="Favorite">
@@ -140,6 +169,7 @@ renderGridItemSoundcloud(track){
           <span className="mdc-grid-tile__title">{title}</span>
           <span className="mdc-grid-tile__support-text">{subtitle}</span>
         </span>
+     </div>
       </li>
   )
 }

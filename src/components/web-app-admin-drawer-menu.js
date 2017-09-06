@@ -2,6 +2,11 @@
 
 // React imports
 import React, {PureComponent} from 'react';
+import {
+  NavLink
+} from 'react-router-dom'
+
+import './web-app-admin-drawer-menu.css'
 
 export default class AdminDrawerMenu extends PureComponent {
   state = {
@@ -9,92 +14,94 @@ export default class AdminDrawerMenu extends PureComponent {
   }
 
 
+
   render() {
+    console.log(this.props)
+    
     return (
       
      
     <div className="mdc-list-group">
         <nav className="mdc-list">
-            <a className="mdc-list-item mdc-persistent-drawer--selected" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">inbox</i>Inbox
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Star
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">send</i>Sent Mail
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">drafts</i>Drafts
-            </a>
+            <NavLink exact activeClassName="nav-active" to='/admin' className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">dashboard</i>Dashboard
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to="/admin/pages" className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Pages
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to='/admin/media' className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">send</i>Media
+            </NavLink>
         </nav>
-        <hr className="mdc-list-divider" />
+
+      <hr className="mdc-list-divider" />
+      
         <nav className="mdc-list">
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
-            </a>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Soundcloud
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Youtube
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Eventbrite
+            </NavLink>
         </nav>
       
+      
+      <hr className="mdc-list-divider" />
       
       
       <nav className="mdc-list">
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
-            </a>
-            <a className="mdc-list-item" href="#">
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
-            </a>
-        </nav>
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
+            </NavLink>
+        </nav><hr className="mdc-list-divider" />
       
       
       <nav className="mdc-list">
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
-            </a>
-            <a className="mdc-list-item" href="#">
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
-            </a>
-        </nav>
-      
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
+            </NavLink>
+        </nav><hr className="mdc-list-divider" />
       
       
       <nav className="mdc-list">
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
-            </a>
-            <a className="mdc-list-item" href="#">
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
-            </a>
-        </nav>
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
+            </NavLink>
+        </nav><hr className="mdc-list-divider" />
       
       
       <nav className="mdc-list">
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
-            </a>
-            <a className="mdc-list-item" href="#">
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </a>
-            <a className="mdc-list-item" href="#">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
-            </a>
+            </NavLink>
+            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
+            </NavLink>
         </nav>
-      
       
       
     </div>

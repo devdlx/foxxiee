@@ -1,27 +1,35 @@
 /* eslint-disable */
 
 // React imports
-import React, {PureComponent} from 'react';
+import React, {
+  PureComponent
+} from 'react';
 
 // Material Components Web
 // Drawer
-import {MDCPersistentDrawer} from "@material/drawer/dist/mdc.drawer";
+import {
+  MDCPersistentDrawer
+} from "@material/drawer/dist/mdc.drawer";
 
 
 import './drawer-desktop.css';
 
 export default class DrawerDesktop extends PureComponent {
   state = {
-    
+
   }
 
-componentDidMount(){
-  const drawer = new MDCPersistentDrawer(this.desktopdrawerref);
-  this.drawer = drawer;
-  this.drawer.open = true
-}
+  componentDidMount() {
+    //   const drawer = new MDCPersistentDrawer(this.desktopdrawerref);
+    //   this.drawer = drawer;
+    //   console.log(this.nav)
+    //   this.drawer.unlisten("touchmove")
+    // //     this.nav.unlisten("toucstart")
 
-  toggle(e){
+    //   this.drawer.open = true
+  }
+
+  toggle(e) {
     //   console.log(e)
     console.log(this.drawer.open = !this.drawer.open)
   }
@@ -29,11 +37,9 @@ componentDidMount(){
   render() {
     return (
       <aside className="mdc-persistent-drawer" ref={(drawer) => {this.desktopdrawerref = drawer}} style={this.props.style}>
-       <nav className="mdc-persistent-drawer__drawer">
-         
-         
-    {this.props.children}
-        </nav>
+       <nav className="mdc-persistent-drawer__drawer" ref={(nav) => {this.nav = nav}}>
+        {this.props.children}
+       </nav>
       </aside>
     );
   }

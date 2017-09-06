@@ -35,6 +35,10 @@ const PrivateRoute =  observer ( ({ component: Component, ...rest }) => (
 
 
 
+
+
+
+
 const WebAppRouter = observer (class WebAppRouter extends PureComponent {
   state = {}
 
@@ -50,7 +54,8 @@ const WebAppRouter = observer (class WebAppRouter extends PureComponent {
           }
           
           <Route path="/login" component={Login}/>
-          <Route component={WebAppBrowser} />
+          <Route path="/" component={WebAppBrowser} />
+      
         </Switch>
         </Router>
       </div>
