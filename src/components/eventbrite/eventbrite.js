@@ -28,7 +28,7 @@ export default class EventBright extends Component {
       }
       return response.json();
     }).then(function(events) {
-      console.log(events);
+//       console.log(events);
     });
   }
 
@@ -50,7 +50,7 @@ export const fetchEvents = () => {
     }
     return response.json();
   }).then((data) => {
-    console.log(data);
+//     console.log(data);
 
 //     let events = [];
 

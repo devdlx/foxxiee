@@ -12,7 +12,7 @@ class StorageStore {
 
   constructor(firebase) {
 
-    console.log('Storage Store', firebase)
+    //     console.log('Storage Store', firebase)
     //     extendObservable(this, {
     //       loading: this.loading,
     //       active: this.active,
@@ -26,26 +26,9 @@ class StorageStore {
     this.database = firebase.database();
     this.storage = firebase.storage();
     this.uploadsRef = firebase.database().ref('media')
-    // Initiates Firebase auth and listen to auth state changes.
-    this.auth.onAuthStateChanged(this.onAuthStateChanged);
-
   }
 
 
-  signIn() {
-    // Sign in Firebase using popup auth and Google as the identity provider.
-    var provider = new this.firebase.auth.GoogleAuthProvider();
-    this.auth.signInWithPopup(provider);
-  }
-
-  onAuthStateChanged(user) {
-    if (user) { // User is signed in!
-      // Get profile pic and user's name from the Firebase user object.
-      var profilePicUrl = user.photoURL; // Only change these two lines!
-      var userName = user.displayName;
-      this.user = user
-    }
-  }
 
 
   upload(fileInput) {
@@ -85,7 +68,9 @@ class StorageStore {
     //     if (this.checkSignedInWithMessage()) {
 
     // We add a message with a loading icon that will get updated with the shared image.
-    //       var currentUser = this.auth.currentUser;
+          var currentUser = this.auth.currentUser;
+//     console.log(currentUser)
+    
 
     //     return uploadItem;
     this.uploadsRef.push(file)
@@ -147,14 +132,6 @@ class StorageStore {
 
     // Check if the user is signed-in 
     // }
-
-
-
-
-
-
-
-
 
   }
 

@@ -27,9 +27,9 @@ const Player = observer(class Player extends React.Component {
 
   componentDidMount() {
 //     console.log('Player Props: ', this.props.player)
-    const {player} = this.props
-    this.player = player
-console.log(player.loadAllTracks())
+//     const {player} = this.props
+    this.player = this.props.store.Player
+  console.log(this.props.store.Player.loadAllTracks())
   }
 
   playTrackAtIndex(playlistIndex) {
@@ -95,61 +95,6 @@ console.log(player.loadAllTracks())
     }
   }
   
-  
-  render2(){
-    
-    
-//     console.log(this.state.currentTrack.permalink_url || '  -_-   permalink_url: none yet')
-    
-    const {permalink_url} = this.state.currentTrack || '';
-    const clientId = config.clientId;
-    const {
-      url, playing, volume,
-      played, loaded, duration,
-      playbackRate,
-    } = this.state
-    
-    return(
-      
-      <header className="player mdc-toolbar mdc-toolbar--theme-dark">
-            <div className="mdc-toolbar__row">
-              <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <ReactPlayer url={permalink_url} ref={player => { this.player = player }}
-              className='react-player'
-              width='36px'
-              height='36px'
-              playing={playing}
-              playbackRate={playbackRate}
-              volume={volume}
-             
-              onReady={() => console.log('onReady')}
-              onStart={() => console.log('onStart')}
-              onPlay={() => this.setState({ playing: true })}
-              onPause={() => this.setState({ playing: false })}
-              onBuffer={() => console.log('onBuffer')}
-              onEnded={() => this.setState({ playing: false })}
-              onError={e => console.log('onError', e)}
-              onProgress={this.onProgress}
-              onDuration={duration => this.setState({ duration })}
-              soundcloudConfig={{clientId}}
-              />
-                <div className="meta-wrapper">
-                  <h1 className="mdc-typography--title trackTitle">Title</h1>
-                  <h1 className="mdc-typography--caption trackUser">Title</h1>
-                </div>
-              </section>
-              <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-                <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-back" aria-label="Download" alt="Download">fast_rewind</button>
-                <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-play" aria-label="Print this page" alt="Print this page" onClick={this.playPause} >play_arrow</button>
-                <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-next" aria-label="Bookmark this page" alt="Bookmark this page">fast_forward</button>
-      
-              </section>
-            </div>
-          </header>
-      )
-    
-    }
-    
     
     render(){
     
@@ -162,26 +107,26 @@ console.log(player.loadAllTracks())
       url, playing, volume,
       played, loaded, duration,
       playbackRate,
-    } = this.props.player
+    } = this.props.store.Player
     
-    const {player} = this.props
+    const {Player} = this.props.store
     
     return(
       
       <header className="player mdc-toolbar mdc-toolbar--theme-dark">
             <div className="mdc-toolbar__row">
               <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <ReactPlayer url={player.active.permalink_url} ref={reactplayer => { this.reactplayer = reactplayer }}
-              className='react-player'
-              width='36px'
-              height='36px'
-              playing={playing}
-              playbackRate={playbackRate}
-              volume={volume}
+                <ReactPlayer url={Player.active ? Player.active.permalink_url : ''} ref={reactplayer => { this.reactplayer = reactplayer }}
+                  className='react-player'
+                  width='36px'
+                  height='36px'
+                  playing={playing}
+                 playbackRate={playbackRate}
+                  volume={volume}
              
 //               onReady={() => console.log('onReady')}
 //               onStart={() => console.log('onStart')}
-              onPlay={() => player.playing= true }
+              onPlay={() => this.setState({ playing: true })}
               onPause={() => this.setState({ playing: false })}
               onBuffer={() => console.log('onBuffer')}
               onEnded={() => this.setState({ playing: false })}
@@ -191,13 +136,20 @@ console.log(player.loadAllTracks())
               soundcloudConfig={{clientId}}
               />
                 <div className="meta-wrapper">
-                  <h1 className="mdc-typography--title trackTitle">{player.active.title}</h1>
-                  <h1 className="mdc-typography--caption trackUser">{player.active.subtitle}</h1>
+                  <h1 className="mdc-typography--title trackTitle">{Player.active.title}</h1>
+                  <h1 className="mdc-typography--caption trackUser">{Player.active.subtitle}</h1>
                 </div>
               </section>
-              <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+              <section className="mdc-toolbar__section mdc-toolbar__section--align-end player-controls" role="toolbar">
                 <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-back" aria-label="Download" alt="Download">fast_rewind</button>
-                <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-play" aria-label="Print this page" alt="Print this page" onClick={this.playPause} >play_arrow</button>
+                  {
+                    !this.state.playing &&
+                    <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-play" aria-label="Print this page" alt="Print this page" onClick={this.playPause} >play_arrow</button>
+                  }
+                  {
+                    this.state.playing &&
+                    <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-pause" aria-label="Pause" alt="Pause" onClick={this.playPause} >pause</button>
+                  }
                 <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-next" aria-label="Bookmark this page" alt="Bookmark this page">fast_forward</button>
       
               </section>

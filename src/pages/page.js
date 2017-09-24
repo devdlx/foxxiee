@@ -22,9 +22,7 @@ export default class Page extends PureComponent {
     console.log(this.props)
     this.setState({items: []});
 
-    const {type} = {
-      ...this.props.match.params
-    }
+    const {type} = {...this.props.match.params}
     // console.log(type);
 
     if (type === 'music') {

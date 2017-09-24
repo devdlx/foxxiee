@@ -1,0 +1,123 @@
+.media-button {
+  width: 44px;
+  height: 44px;
+  left: calc(50% - 22px);
+  top: calc(50% - 22px);
+  position: absolute;
+}
+
+.grid .mdc-grid-tile__innerWrapper {
+  margin: 4px;
+}
+
+.grid{
+  padding: 0;
+  margin: 0;
+}
+
+.square {
+  width: 50%;
+}
+
+.wide {
+  width: 100%;
+}
+
+.mdc-grid-tile__secondary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*   width: 100%; */
+}
+
+.mdc-grid-list .mdc-grid-tile__secondary {
+  left: 0;
+  width: 100%;
+}
+
+@media (max-width: 839px) and (min-width: 480px) {
+  .square{
+    width: 33%;
+  }
+  .wide{
+    width: 50%;
+  }
+}
+
+@media (min-width: 840px) {
+  .square{
+    width: 20%;
+  }
+  .wide{}
+}
+
+@media (min-width: 840px) {
+  ul.mdc-grid-list__tiles -_-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .square{
+    width: 20%;
+  }
+  .wide .mdc-grid-tile ._old {
+    width: 15%;
+  }
+  .wide .mdc-grid-tile .new{
+    width: 33%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .square{
+    width: 15%;
+  }
+  .wide{
+    width: 20%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .square{
+    width: 10%;
+  }
+  .wide{
+    width: 15%;
+  }
+}
+
+/* 
+------------------------
+
+
+Grid: Cards
+
+*/
+.grid-card {
+ 
+}
+
+
+.grid-card-item {
+  
+}
+
+
+.grid-card-item .mdc-card:hover {
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+
+.grid-card-item .mdc-card { 
+-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+    box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+  -webkit-transition:all .2s ease-in-out;
+  
+}
+
+.primary-on-dark{
+  color: var(--mdc-theme-primary) !important
+}

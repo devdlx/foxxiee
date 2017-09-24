@@ -21,24 +21,24 @@ export default class AdminDrawerMenu extends PureComponent {
     <div className="mdc-list-group">
         
       <nav className="mdc-list">
-            <NavLink activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">inbox</i>Home
+            <NavLink exact activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">home</i>Home
             </NavLink>
             
-            <NavLink activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="pages/music">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Music
+            <NavLink exact activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/pages/music">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">headset</i>Music
             </NavLink>
             
-            <NavLink activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="pages/video">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">send</i>Videos
+            <NavLink exact activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/pages/video">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">video_library</i>Videos
             </NavLink>
             
-            <NavLink activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="pages/events">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">drafts</i>Events
+            <NavLink exact activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/pages/events">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">date_range</i>Events
             </NavLink>
       
-            <NavLink activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="pages/contact">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">drafts</i>Contact
+            <NavLink exact activeClassName="mdc-persistent-drawer--selected" className="mdc-list-item" to="/pages/contact">
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">perm_contact_calendar</i>Contact
             </NavLink>
         </nav>
 

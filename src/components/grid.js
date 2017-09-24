@@ -2,28 +2,34 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 
+import Select from './select'
 
-export default class Grid extends PureComponent {
+import './grid.css'
+
+
+
+
+
+
+export default class TileGrid extends PureComponent {
 
   static propTypes = {
-    
+
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      
+
     };
   }
 
 
-render
-
   render() {
     return (
       <div className="mdc-grid-list mdc-grid-list--twoline-caption">
-        <ul className="mdc-grid-list__tiles" style={{width: 408}}>
+        <ul className="mdc-grid-list__tiles">
 
         </ul>
       </div>
@@ -33,22 +39,21 @@ render
 }
         
         
-export class GridItem extends PureComponent {
+export class Tile extends PureComponent {
 
   static propTypes = {
-    
+
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      
+
     };
   }
 
 
-render
 
   render() {
     return (
@@ -67,4 +72,101 @@ render
 }
 
 
+
+
+export class Card extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+       view: 'ready'
+    };
+  }
+  
+
+  
+  changeView(view){
+    this.setState({view})
+  }
+  
+  
+render()  {
+  
+ const {view} = this.state 
+ const {props} = this
+  return (
+    <div className="grid-card-item mdc-layout-grid__cell mdc-layout-grid__cell--span-12 ">
+     <div className="mdc-card mdc-elevation--z3">
+            <div className="mdc-card__horizontal-block">
+    
+    { view==='ready' && 
+    <section className="mdc-card__primary">
+                <h1 className="mdc-card__title mdc-card__title--large primary-on-dark">{props.item.title}</h1>
+                <h2 className="mdc-card__subtitle primary-on-dark">{props.item.subtitle}</h2>
+              </section>
+    }
+    
+    { view==='Analytics' && 
+    <section className="mdc-card__primary">
+                <h1 className="mdc-card__title mdc-card__title--large primary-on-dark">Analytics</h1>
+
+    </section>
+    }
+    
+    
+              <img className="mdc-card__media-item mdc-card__media-item--1dot5x" src={props.item.cover} />
+            </div>
+            <section className="mdc-card__actions">
+    
+        { view==='ready'&& 
+    
+    
+        <span>
+    
+    <Select />
+              <button className="mdc-button mdc-button--compact mdc-card__action  mdc-button--raised">Action 2</button>
+              <button className="mdc-button mdc-button--compact mdc-card__action primary-on-dark" onClick={()=>this.changeView('Analytics')}>Analytics</button>
+    
+        </span>
+        }
+    
+     { view!='ready' && 
+    <button className="mdc-button mdc-button--compact mdc-card__action mdc-button--raised material-icons" onClick={()=>this.changeView('ready')}>arrow_back</button>
+    }
+
+            </section>
+          </div>
+    </div>
+  )}
+}
+
+export class CardGrid extends PureComponent {
+
+  static propTypes = {
+
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+  }
+
+
+
+  render() {
+    return (
+       <div className="mdc-layout-grid">
+        <div className="mdc-layout-grid__inner">
+            {this.props.items.map((item, i) => <Card item={item} key={i} />)} 
+        </div>
+      </div>
+    );
+  }
+
+}
+
+//onMouseLeave={this.onMouseLeave} onMouseEnter={this.onMouseEnter}
 

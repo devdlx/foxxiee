@@ -6,10 +6,19 @@ import {
   toJS
 } from 'mobx'
 
+import MobxFirebaseStore from 'mobx-firebase-store';
+import {observer} from 'mobx-react';
+import {createAutoSubscriber} from 'firebase-nest';
+
+
 import firebase from 'firebase'
 
 import PlayerStore from './player'
 import StorageStore from './storage'
+import UserStore from './user'
+import PagesStore from './pages'
+import SoundcloudStore from './soundcloud'
+
 
 
 const config = {
@@ -21,133 +30,31 @@ const config = {
   messagingSenderId: "1013557392388"
 }
 
-firebase.initializeApp(config);
+const app = firebase.initializeApp(config);
 
 const root = firebase.database().ref()
-const items = firebase.database().ref('items/music')
 const settings = firebase.database().ref('settings')
-const user = firebase.database().ref('user')
-
-const storageRef = firebase.storage().ref();
-
-const FB = {
-  root,
-  items,
-  settings,
-  user
-}
-
-class MusicItemsFirebase {
 
 
-  constructor() {
-    FB.items.on('child_added', (_child) => {
-      items.push(_child.val())
-    })
 
-  }
-
-  get items() {
-    return toJS(this.items);
-  }
-
-  add = (data) => {
-    const id = FB.items.push().key;
-    this.update(id, data);
-  }
-
-  update = (id, data) => {
-    FB.items.update({
-      [id]: data
-    })
-  }
-
-  del = (id) => {
-    FB.items.child(id).remove();
-  }
-
-}
-
-const musicItems = new MusicItemsFirebase();
+const User = new UserStore(firebase)
+const Pages = new PagesStore(firebase);
+const Uploads = new StorageStore(firebase)
+const Player = new PlayerStore(firebase)
+const soundcloud = new SoundcloudStore(firebase)
+// window.soundcloud = soundcloud
 
 
 
 
 
+// const soundcloud = new MobxFirebaseStore(firebase.database(app).ref('addons/Soundcloud'));
 
-
-
-
-class UserFirebase {
-
-  waiting = true;
-
-  constructor() {
-    //     FB.user.on('value', (_child) => {
-    //       console.log(_child.val())
-    //     })
-//     console.log('User Store')
-    extendObservable(this, {
-      isAuthenticated: this.isAuthenticated
-    });
-  }
-
-
-
-
-  signIn() {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
-  }
-
-  get profile() {
-    return toJS(this.user);
-  }
-
-  signOut() {
-    firebase.auth().signOut().then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
-  }
-
-  update = (id, data) => {
-    FB.user.update({
-      [id]: data
-    })
-  }
-
-  del = (id) => {
-    FB.user.child(id).remove();
-  }
-
-}
-const User = new UserFirebase();
-// console.log("User - ", User)
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in.
-//     console.log(user)
-  } else {
-    // No user is signed in.
-//     console.log('no user', user)
-//     console.log(User.waiting)
-  }
-  User.waiting = false
-  User.isAuthenticated = true;
-})
-
-const Storage = new StorageStore(firebase)
 
 export {
-  User, musicItems, PlayerStore, Storage
+  User,
+  Pages,
+  Uploads,
+  Player,
+  soundcloud
 };

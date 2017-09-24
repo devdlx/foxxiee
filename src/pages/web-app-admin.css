@@ -1,5 +1,6 @@
 /* Ensure layout covers the entire screen. */
 
+
 /* :root {
   --mdc-theme-primary: #212121;
   --mdc-theme-accent: #64dd17;
@@ -7,14 +8,25 @@
 }
  */
 
+
 /*  green #d60000
  darkgrey #FBC02D */
-
 
 .page.admin-page {
   display: flex;
   --mdc-theme-primary: #212121;
   --mdc-theme-accent: #64dd17;
+}
+
+.page .page {
+  padding: 24px;
+}
+
+.page .page.page-toolbar {
+  padding: 0;
+}
+.page .page.page-toolbar .content {
+  padding: 24px;
 }
 
 

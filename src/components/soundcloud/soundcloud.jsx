@@ -12,7 +12,6 @@ export const config = {
   username: 'ahkiki_la_foxxiee'
 };
 
-
 export const clientIdURI = `?client_id=${config.clientId}`;
 
 // config.fetchSoundcloud = (username) => {
@@ -30,14 +29,13 @@ export const clientIdURI = `?client_id=${config.clientId}`;
 //
 // export default config;
 
-let header = new Headers({
-  'Access-Control-Allow-Origin': '*'
-});
+let header = new Headers({'Access-Control-Allow-Origin': '*'});
 let sentData = {
   method: 'get',
   mode: 'cors',
   header: header
 };
+
 const scUserDataURI = `https://api.soundcloud.com/users/${config.username}${clientIdURI}`
 let scUser = {};
 
@@ -59,12 +57,12 @@ const fetchTracksByUser = (returnCount = 0) => {
     if (tracks.length) {
 
       tracks.forEach(function(item, index) {
-        tracks[index] = { ...item,
+        tracks[index] = {
+          ...item,
           key: item.id
         };
       });
       //           tracks[i].key = tracks[i].id;
-
 
       if (returnCount) {
         return tracks.slice(0, returnCount);
@@ -77,7 +75,6 @@ const fetchTracksByUser = (returnCount = 0) => {
     return err;
   })
 }
-
 
 const fetchSoundcloudByKey = (key) => {
 
@@ -93,49 +90,68 @@ const fetchSoundcloudByKey = (key) => {
 
 }
 
-
 const fetchTracksPlayer = () => {
-// Fetch list from firebase 
+  // Fetch list from firebase
 
-let header = new Headers({
-  'Access-Control-Allow-Origin': '*'
-})
+  const scUserDataURI = `https://api.soundcloud.com/users/${config.username}${clientIdURI}`
 
-let sentData = {
-  method: 'get',
-  mode: 'cors',
-  header: header
-}
+  // fetch soundcloud user profile
+  return fetch(scUserDataURI, sentData).then((resp) => resp.json()).then((data) => {
+    if (data.errors) {
+      console.error('Error: ', data.errors);
+      return;
+    }
 
-const scUserDataURI = `https://api.soundcloud.com/users/${config.username}${clientIdURI}`
-
-// fetch soundcloud user profile
-return fetch(scUserDataURI, sentData).then((resp) => resp.json()).then((data) => {
-  if (data.errors) {
-    console.error('Error: ', data.errors);
-    return;
-  }
-
-  // fetch soundcloud user trackUser
-  const scUserTracksURI = `https://api.soundcloud.com/users/${data.id}/tracks${clientIdURI}`;
-  return fetch(scUserTracksURI, sentData);
-}).then((resp) => resp.json()).then((tracks) => {
+    // fetch soundcloud user trackUser
+    const scUserTracksURI = `https://api.soundcloud.com/users/${data.id}/tracks${clientIdURI}`;
+    return fetch(scUserTracksURI, sentData);
+  }).then((resp) => resp.json()).then((tracks) => {
     //       console.log(tracks);
     if (tracks.length) {
       return tracks
     }
-  }
-).catch((err) => {
-  console.error('Error: ', err);
-})
+  }).catch((err) => {
+    console.error('Error: ', err);
+  })
 }
+
+
+
+const getUserProfile = () => {
+  // Fetch list from firebase
+
+  const scUserDataURI = `https://api.soundcloud.com/users/${config.username}${clientIdURI}`
+
+  // fetch soundcloud user profile
+  return fetch(scUserDataURI, sentData).then((resp) => resp.json()).then((data) => {
+    if (data.errors) {
+      console.error('Error: ', data.errors);
+      return;
+    }
+
+    // fetch soundcloud user trackUser
+    const scUserTracksURI = `https://api.soundcloud.com/users/${data.id}/tracks${clientIdURI}`;
+    return fetch(scUserTracksURI, sentData);
+  }).then((resp) => resp.json()).then((tracks) => {
+    //       console.log(tracks);
+    if (tracks.length) {
+      return tracks
+    }
+  }).catch((err) => {
+    console.error('Error: ', err);
+  })
+}
+
+
+
+
+
 const Soundcloud = {
   config,
   fetchSoundcloudByKey,
   fetchTracksByUser,
-  fetchTracksPlayer
+  fetchTracksPlayer,
+  getUserProfile
 }
 
-export {
-  Soundcloud
-}
+export {Soundcloud}

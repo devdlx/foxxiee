@@ -13,15 +13,23 @@ import Login from '../pages/login';
 import {observer} from "mobx-react";
 import {musicItems, User, PlayerStore} from '../store';
 
-// console.log('PlayerStore: ',PlayerStore)
+import * as Store from '../store';
+
+window.Store = Store
 
 
-window.User = User
+const PassRoute =  observer ( ({ component: Component, ...rest }) => (
+  <Route render={props => (
+    (
+      <Component {...props} store={Store}/>
+    ) 
+  )}/>
+))
 
 const PrivateRoute =  observer ( ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     User.isAuthenticated ? (
-      <Component {...props}/>
+      <PassRoute path="/admin" component={Component}/>
     ) : (
       <Redirect to={{
         pathname: '/login',
@@ -33,29 +41,55 @@ const PrivateRoute =  observer ( ({ component: Component, ...rest }) => (
 
 
 
-
-
-
-
-
-
 const WebAppRouter = observer (class WebAppRouter extends PureComponent {
   state = {}
 
   render() {
-//     console.log(this.props.user)
+//   console.log('User Observer: isAuthenticated ', Store.User.isAuthenticated)
+//   console.log('User Observer: waiting ', Store.User.waiting)
+    
     return (
       <div>
         <Router>
         <Switch>
-          {
-              this.props.user.isAuthenticated && 
-              <Route path="/admin" component={WebAppAdminRouter}/>
-          }
-          
-          <Route path="/login" component={Login}/>
-          <Route path="/" component={WebAppBrowser} />
+      {
+        Store.User.isAuthenticated && 
+        <Route path='/admin' render={(props) => (
+            <WebAppAdminRouter {...props} store={Store}/>
+        )}/>
+      }
       
+      {
+        Store.User.isAuthenticated && 
+        <Route path='/login' render={(props) => (
+          <Redirect to={{
+            pathname: '/admin',
+            state: { from: props.location }
+          }}/>
+        )}/>
+      }
+      
+      
+      {
+        !Store.User.isAuthenticated && !Store.User.waiting && 
+        <Route path='/admin' render={(props) => (
+          <Redirect to={{
+            pathname: '/login',
+            state: { from: props.location }
+          }}/>
+        )}/>
+      }
+      
+      
+      {
+        Store.User.waiting && 
+        <Route path='/admin' render={(props) => (
+          <div>loading...</div>
+        )}/>
+      }
+          <PassRoute path="/login" component={Login}/>
+          <PassRoute path="/" component={WebAppBrowser} />
+          // ErrorRoute
         </Switch>
         </Router>
       </div>
@@ -66,7 +100,8 @@ const WebAppRouter = observer (class WebAppRouter extends PureComponent {
 
 export default WebAppRouter
 
-//           <PrivateRoute path="/admin" component={WebAppAdminRouter} user={User}/>
-
-
-//             <Route path="/blog" component={Blog}/>
+//           <PrivateRoute path="/admin" component={WebAppAdminRouter}/>           
+//           <Route path="/blog" component={Blog}/>
+// <Route path='/admin' render={(props) => (
+//             <WebAppAdminRouter {...props} store={Store}/>
+//           )}/>

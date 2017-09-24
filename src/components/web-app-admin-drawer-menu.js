@@ -13,10 +13,12 @@ export default class AdminDrawerMenu extends PureComponent {
     
   }
 
-
+  signout(e){
+    console.log(e)
+  }
 
   render() {
-    console.log(this.props)
+//     console.log(this.props)
     
     return (
       
@@ -37,13 +39,13 @@ export default class AdminDrawerMenu extends PureComponent {
       <hr className="mdc-list-divider" />
       
         <nav className="mdc-list">
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+            <NavLink activeClassName="nav-active" to='/admin/plugins/Soundcloud' className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Soundcloud
             </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+            <NavLink exact activeClassName="nav-active" to='/admin/plugins/Youtube' className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Youtube
             </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+            <NavLink exact activeClassName="nav-active" to='/admin/plugins/Eventbrite' className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Eventbrite
             </NavLink>
         </nav>
@@ -53,56 +55,16 @@ export default class AdminDrawerMenu extends PureComponent {
       
       
       <nav className="mdc-list">
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+            <NavLink exact activeClassName="nav-active" to='/admin/settings' className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
             </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
+            <NavLink exact activeClassName="nav-active" to='/admin/trash' className="mdc-list-item">
                 <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
             </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
-            </NavLink>
-        </nav><hr className="mdc-list-divider" />
-      
-      
-      <nav className="mdc-list">
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
-            </NavLink>
-        </nav><hr className="mdc-list-divider" />
-      
-      
-      <nav className="mdc-list">
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
-            </NavLink>
-        </nav><hr className="mdc-list-divider" />
-      
-      
-      <nav className="mdc-list">
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>Settings
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
-            </NavLink>
-            <NavLink exact activeClassName="nav-active" to={'#'}className="mdc-list-item">
-                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Logout
-            </NavLink>
+            <a className="mdc-list-item" onClick={this.signout}>
+                <i className="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Sign Out
+            </a>
         </nav>
-      
       
     </div>
 

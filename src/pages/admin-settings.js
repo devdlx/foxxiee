@@ -1,36 +1,37 @@
 /* eslint-disable */
 
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 
 import Dropzone from 'react-dropzone'
 
-
-export default class Dashboard extends PureComponent {
+import {User, Storage} from '../store'
+export default class AdminSettings extends PureComponent {
 
   state = {
-    
+    user : User
   }
 
-  uploadItem(e){
-    e.preventDefault();
-    console.log(this.fileInput)
-    Storage.upload(this.fileInput)
-  }
+uploadItem(e){
+  e.preventDefault();
+  console.log(this.fileInput)
+  Storage.upload(this.fileInput)
+}
 
   render() {
     
-    const {User, Player} = this.props.store
+    console.log(this.state.user)
         
     return (
-      <div className="page admin-dashboard " style={{padding:24}}>
-        <h1 className="mdc-typography--display1">Dashboard {User.isAuthenticated}</h1>
+      <div className="page admin-dashboard ">
+        <h1 className="mdc-typography--display1">AdminSettings {this.state.user.isAuthenticated}</h1>
       
-      <form id="image-form" action="#">
+      <form id="image-form" action="">
             <input id="mediaCapture" type="file" accept="*" ref={(input) => { this.fileInput = input; }}  onChange={(event)=> { console.log(this)}} />
             <button id="submitImage" title="Add an image" className="" onClick={(e)=>this.uploadItem(e)}>
               <i className="material-icons">image</i>
             </button>
           </form>
+      
       
       </div>
     );

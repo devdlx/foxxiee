@@ -9,8 +9,16 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
+.show{
+  opacity:1;
+}
+
+.hide{
+  opacity:0;
+}
 
 /*  red #d60000
  gold #FBC02D */
@@ -36,8 +44,17 @@ a {
   padding-bottom: 72px;
 }
 
+.mdc-button{
+  cursor:pointer;
+}
 
 /* aside {
   height: calc( 100vh - 104px);
   overflow-y: auto;
 } */
+
+
+.header-progressbar{
+  position: absolute;
+  bottom: 0;
+}
