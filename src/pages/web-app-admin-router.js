@@ -20,6 +20,8 @@ import {
 import DrawerDesktop  from "../components/drawer-desktop";
 import DrawerMobile  from "../components/drawer-mobile";
 import WebAppAdminDrawerMenu  from "../components/web-app-admin-drawer-menu";
+import Dialog  from "../components/dialog";
+
 
 import AdminPages from '../pages/admin-pages';
 import AdminMedia from '../pages/admin-media';
@@ -66,6 +68,8 @@ const WebAppAdmin = observer(class WebAppAdmin extends PureComponent {
 
 componentDidMount(){
   this.handleWindowSizeChange();
+    window.pagesDialog = this.pagesDialog
+  
 }
 
 menuPress(e){
@@ -117,6 +121,13 @@ componentWillUpdate(nextProps, nextState) {
         soundcloud.tracks.size
     return (
      <div className="page admin-page mdc-toolbar-fixed-adjust ">
+      
+       <Dialog title="Pages" 
+           ref={(pagesDialog) => {this.pagesDialog = pagesDialog}}  
+      >
+      
+       </Dialog>
+      
       
       {isMobile && 
       

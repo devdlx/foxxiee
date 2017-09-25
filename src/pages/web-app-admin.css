@@ -16,6 +16,7 @@
   display: flex;
   --mdc-theme-primary: #212121;
   --mdc-theme-accent: #64dd17;
+  background: #f1f3f6;
 }
 
 .page .page {
@@ -26,7 +27,8 @@
   padding: 0;
 }
 .page .page.page-toolbar .content {
-  padding: 24px;
+/*   padding: 24px; */
+  min-height: 100vh;
 }
 
 

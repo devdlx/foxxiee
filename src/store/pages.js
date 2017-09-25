@@ -2,71 +2,59 @@
 import {
   extendObservable,
   computed,
-  map,
-  toJS
-} from 'mobx'
+  toJS,
+  observable,
+  runInAction
+} from 'mobx';
+const {
+  map
+} = observable;
 
-
-class MusicItemsFirebase {
-
-
-  constructor() {
-    
-
-  }
-
-  get items() {
-    return toJS(this.items);
-  }
-
-  add = (data) => {
-    const id = FB.items.push().key;
-    this.update(id, data);
-  }
-
-  update = (id, data) => {
-    FB.items.update({
-      [id]: data
-    })
-  }
-
-  del = (id) => {
-    FB.items.child(id).remove();
-  }
-
-}
-
+const pages = map({})
 
 class PagesStore {
 
-  waiting = true
-  isAuthenticated = false
-  pages = []
-
   constructor(firebase) {
-
-    extendObservable(this, {
-      isAuthenticated: this.isAuthenticated,
-      waiting: this.waiting,
-      pages: this.pages
-    })
 
     this.firebase = firebase;
     this.auth = firebase.auth();
     this.database = firebase.database();
     this.pagesRef = firebase.database().ref('pages')
     // Initiates Firebase auth and listen to auth state changes.
-    
-    
-    this.pagesRef.on('child_added', (_child) => {
-      this.pages.push(_child.val())
+
+    this.pagesRef.on('value', (_child) => {
+      pages.replace(_child.val())
     })
 
-    
+  }
+
+  get pages() {
+    return pages
+  }
+  
+  page(pageKey) {
+    console.log(pages.has(pageKey), pages[pageKey])
+    return pages
+  }
+
+  updatePage(item, pageKey, added) {
+
+    console.log(item, pageKey, added)
+
+    const pageItemPath = "/pages/"+pageKey+"/posts/" + item.id
+    const itemPagePath = "/addons/Soundcloud/tracks/" + item.id + "/pages/" + pageKey
+
+    var updates = {};
+    updates[pageItemPath] = added;
+    updates[itemPagePath] = added;
+    // console.log(updates);
+    this.firebase.database().ref().update(updates).then(() => {
+      // console.log('it did it but it be trippn bro');
+    });
   }
 
 
- 
+
   update = (id, data) => {
     this.pagesRef.update({
       [id]: data

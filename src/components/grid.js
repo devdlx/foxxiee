@@ -2,12 +2,9 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 
-import Select from './select'
+import {Select, Multi} from './select'
 
 import './grid.css'
-
-
-
 
 
 
@@ -90,12 +87,20 @@ export class Card extends PureComponent {
   }
   
   
+  pagesDialogClick(){
+//     console.log('pagesDialogClick', window.pagesDialog.show())
+//     window
+//     console.log(this.props.item.id)
+    window.pagesDialog.show(this.props.item)
+  }
+  
+  
 render()  {
   
  const {view} = this.state 
  const {props} = this
   return (
-    <div className="grid-card-item mdc-layout-grid__cell mdc-layout-grid__cell--span-12 ">
+    <div className="grid-card-item mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone  ">
      <div className="mdc-card mdc-elevation--z3">
             <div className="mdc-card__horizontal-block">
     
@@ -109,7 +114,6 @@ render()  {
     { view==='Analytics' && 
     <section className="mdc-card__primary">
                 <h1 className="mdc-card__title mdc-card__title--large primary-on-dark">Analytics</h1>
-
     </section>
     }
     
@@ -121,13 +125,11 @@ render()  {
         { view==='ready'&& 
     
     
-        <span>
-    
-    <Select />
-              <button className="mdc-button mdc-button--compact mdc-card__action  mdc-button--raised">Action 2</button>
+        <div style={{display: 'flex', justifyContent:'space-around1', flex:'1'}}>
+              <button className="mdc-button mdc-button--compact mdc-card__action  mdc-button--raised" onClick={()=>this.pagesDialogClick()} >Pages</button>
               <button className="mdc-button mdc-button--compact mdc-card__action primary-on-dark" onClick={()=>this.changeView('Analytics')}>Analytics</button>
     
-        </span>
+        </div>
         }
     
      { view!='ready' && 
@@ -136,6 +138,7 @@ render()  {
 
             </section>
           </div>
+
     </div>
   )}
 }
@@ -155,12 +158,11 @@ export class CardGrid extends PureComponent {
   }
 
 
-
   render() {
     return (
        <div className="mdc-layout-grid">
         <div className="mdc-layout-grid__inner">
-            {this.props.items.map((item, i) => <Card item={item} key={i} />)} 
+            {this.props.items.map((item, i) => <Card item={item} key={i} pagesClick={this.props.pagesClick} />)} 
         </div>
       </div>
     );
@@ -169,4 +171,4 @@ export class CardGrid extends PureComponent {
 }
 
 //onMouseLeave={this.onMouseLeave} onMouseEnter={this.onMouseEnter}
-
+// http://wrapbootstrap.com/preview/WB055J451

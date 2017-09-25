@@ -137,7 +137,7 @@ get tracks() {
             };
 
 
-            this.tracksRef.child(`${data.id}`).set(savedTrack)
+            this.tracksRef.child(`${data.id}`).update(savedTrack)
           });
         }
       }).catch((err) => {
