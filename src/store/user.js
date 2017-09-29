@@ -135,13 +135,13 @@ class UserStore {
     this.waiting = true
     this.firebase.auth().signOut().then(() => {
       // Sign-out successful.
-      this.userRef.child(`${user.uid}/activity`).push({type: 'account:logout', lastLoggin: _user.lastLoggin})
+      // this.userRef.child(`${user.uid}/activity`).push({type: 'account:logout', lastLoggin: _user.lastLoggin})
       this.waiting = false
     }).catch((error) => {
       // An error happened.
       console.error(error)
       this.waiting = false
-      
+
     });
   }
 

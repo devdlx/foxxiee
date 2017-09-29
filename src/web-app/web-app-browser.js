@@ -8,9 +8,9 @@ import MediaQuery from 'react-responsive';
 
 // Pages
 import Feed from '../pages/feed';
-import Page from '../pages/page';
 import Detail from '../pages/detail';
 // import List from '../pages/list';
+import DialogFull from "../components/dialogFull";
 
 // import Blog from '../pages/blog';
 
@@ -27,13 +27,11 @@ import * as Store from '../store';
 
 import './web-app-browser.css';
 
-
-const PassRoute =   ({ component: Component, ...rest }) => (
-  <Route  {...rest} render={props => (
-    (
-      <Component {...props} store={Store}/>
-    ) 
-  )}/>
+const PassRoute = ({
+  component: Component,
+  ...rest
+}) => (
+  <Route {...rest} render={props => ((<Component {...props} store={Store}/>))}/>
 )
 
 const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
@@ -83,25 +81,23 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
 
   render() {
     const {isMobile} = this.state
-//  const {soundcloud} = Store
-//       const {soundcloud} = store
-//     console.log('web app admin soundcloud store ', soundcloud.tracks.keys())
-//         soundcloud.tracks.size
+    //  const {soundcloud} = Store
+    //       const {soundcloud} = store
+    //     console.log('web app admin soundcloud store ', soundcloud.tracks.keys())
+    //         soundcloud.tracks.size
 
     return (
 
       <div className="page web-app-browser mdc-toolbar-fixed-adjust">
 
-        <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
+        <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall app-toolbar">
           <div className="mdc-toolbar__row">
             <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
               <MediaQuery query='(max-width: 767px)'>
                 <button className="demo-menu material-icons mdc-toolbar__icon--menu" onClick={(e) => this.menuPress(e)}>menu</button>
               </MediaQuery>
               <Link to="/" className="mdc-toolbar__title">DesignStudios</Link>
-              <Link to="/admin">
-                <button href="#" className="material-icons mdc-toolbar__icon--menu">menu</button>
-              </Link>
+              <Link to="/admin" className="material-icons mdc-toolbar__icon--menu">menu</Link>
             </section>
 
             <MediaQuery query='(min-width: 768px)'>
@@ -136,24 +132,27 @@ const WebAppBrowser = observer(class WebAppBrowser extends PureComponent {
         <main className="">
 
           <Switch>
-            <Route exact strict path="/page/:page/:itemId" component={Detail}/>
 
-            <Route exact strict path="/page/:page" component={Page}/>
+            <PassRoute exact strict path="/:page/:itemId" component={Detail}/>
 
             <PassRoute exact strict path="/" component={Feed}/>
+            <PassRoute path="/:page" component={Feed}/>
+
           </Switch>
         </main>
 
-        <Player {...this.props} />
+        <DialogFull />
 
       </div>
     );
-
   }
 
 })
 
 export default WebAppBrowser
+
+// <Player />
+
 //             <Route exact strict path="/page/:page" component={Home}/>
 
 // Main Style

@@ -14,12 +14,14 @@ import {observer} from "mobx-react";
 
 import './player.css'
 
+import * as store from '../../store';
+
 const Player = observer(class Player extends React.Component {
-  
+
   state = {
-    
+
   }
-    
+
   constructor(props) {
     super()
 //   console.log(props)
@@ -28,8 +30,9 @@ const Player = observer(class Player extends React.Component {
   componentDidMount() {
 //     console.log('Player Props: ', this.props.player)
 //     const {player} = this.props
-    this.player = this.props.store.Player
-  console.log(this.props.store.Player.loadAllTracks())
+    this.player = store.Player
+  // console.log(store.Player.loadAllTracks())
+  store.Player.loadAllTracks()
   }
 
   playTrackAtIndex(playlistIndex) {
@@ -60,7 +63,7 @@ const Player = observer(class Player extends React.Component {
     }
     return true;
   }
-  
+
 
   nextButton() {
     this.props.nextTrack();
@@ -94,53 +97,181 @@ const Player = observer(class Player extends React.Component {
       this.setState(state)
     }
   }
-  
-    
+
+  clickPlayer = e =>{
+    console.log(e);
+  }
+
+
     render(){
-    
-    
+
+
 //     console.log(this.state.currentTrack.permalink_url || '  -_-   permalink_url: none yet')
-    
+
     const {permalink_url} = this.state.currentTrack || '';
     const clientId = config.clientId;
     const {
       url, playing, volume,
       played, loaded, duration,
       playbackRate,
-    } = this.props.store.Player
-    
-    const {Player} = this.props.store
-    
+    } = store.Player
+
+    const {Player} = store
+
     return(
-      
-      <header className="player mdc-toolbar mdc-toolbar--theme-dark">
-            <div className="mdc-toolbar__row">
+<div className="player">
+
+ <div className="player-container" >
+ <ReactPlayer url={"https://www.youtube.com/watch?v=ouNeYI1lHh0"} ref={reactplayer => { this.reactplayer = reactplayer }}
+   className='react-player'
+   width='100%'
+   height=''
+   playing={playing}
+  playbackRate={playbackRate}
+   volume={volume}
+
+ //               onReady={() => console.log('onReady')}
+ //               onStart={() => console.log('onStart')}
+ onPlay={() => this.setState({ playing: true })}
+ onPause={() => this.setState({ playing: false })}
+ onBuffer={() => console.log('onBuffer')}
+ onEnded={() => this.setState({ playing: false })}
+ onError={e => console.log('onError', e)}
+ //               onProgress={this.onProgress}
+ //               onDuration={duration => this.setState({ duration })}
+ soundcloudConfig={{clientId}}
+ onClick={this.clickPlayer}
+
+ style={{width: 200}}
+ />
+ </div>
+
+
+ <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list">
+               <li className="mdc-list-item">
+               <span className="mdc-list-item__start-detail grey-bg"></span>
+               <span className="mdc-list-item__text">
+                 Two-line item
+                 <span className="mdc-list-item__text__secondary">Secondary text</span>
+               </span>
+             </li>
+             <li className="mdc-list-item">
+               <span className="mdc-list-item__start-detail grey-bg"></span>
+               <span className="mdc-list-item__text">
+                 Two-line item
+                 <span className="mdc-list-item__text__secondary">Secondary text</span>
+               </span>
+             </li>
+             <li className="mdc-list-item">
+               <span className="mdc-list-item__start-detail grey-bg"></span>
+               <span className="mdc-list-item__text">
+                 Two-line item
+                 <span className="mdc-list-item__text__secondary">Secondary text</span>
+               </span>
+             </li>
+             <li className="mdc-list-item">
+             <span className="mdc-list-item__start-detail grey-bg"></span>
+             <span className="mdc-list-item__text">
+               Two-line item
+               <span className="mdc-list-item__text__secondary">Secondary text</span>
+             </span>
+           </li>
+           <li className="mdc-list-item">
+             <span className="mdc-list-item__start-detail grey-bg"></span>
+             <span className="mdc-list-item__text">
+               Two-line item
+               <span className="mdc-list-item__text__secondary">Secondary text</span>
+             </span>
+           </li>
+           <li className="mdc-list-item">
+             <span className="mdc-list-item__start-detail grey-bg"></span>
+             <span className="mdc-list-item__text">
+               Two-line item
+               <span className="mdc-list-item__text__secondary">Secondary text</span>
+             </span>
+           </li>
+           <li className="mdc-list-item">
+           <span className="mdc-list-item__start-detail grey-bg"></span>
+           <span className="mdc-list-item__text">
+             Two-line item
+             <span className="mdc-list-item__text__secondary">Secondary text</span>
+           </span>
+         </li>
+         <li className="mdc-list-item">
+           <span className="mdc-list-item__start-detail grey-bg"></span>
+           <span className="mdc-list-item__text">
+             Two-line item
+             <span className="mdc-list-item__text__secondary">Secondary text</span>
+           </span>
+         </li>
+         <li className="mdc-list-item">
+           <span className="mdc-list-item__start-detail grey-bg"></span>
+           <span className="mdc-list-item__text">
+             Two-line item
+             <span className="mdc-list-item__text__secondary">Secondary text</span>
+           </span>
+         </li>
+         <li className="mdc-list-item">
+         <span className="mdc-list-item__start-detail grey-bg"></span>
+         <span className="mdc-list-item__text">
+           Two-line item
+           <span className="mdc-list-item__text__secondary">Secondary text</span>
+         </span>
+       </li>
+       <li className="mdc-list-item">
+         <span className="mdc-list-item__start-detail grey-bg"></span>
+         <span className="mdc-list-item__text">
+           Two-line item
+           <span className="mdc-list-item__text__secondary">Secondary text</span>
+         </span>
+       </li>
+       <li className="mdc-list-item">
+         <span className="mdc-list-item__start-detail grey-bg"></span>
+         <span className="mdc-list-item__text">
+           Two-line item
+           <span className="mdc-list-item__text__secondary">Secondary text</span>
+         </span>
+       </li>
+       <li className="mdc-list-item">
+       <span className="mdc-list-item__start-detail grey-bg"></span>
+       <span className="mdc-list-item__text">
+         Two-line item
+         <span className="mdc-list-item__text__secondary">Secondary text</span>
+       </span>
+     </li>
+     <li className="mdc-list-item">
+       <span className="mdc-list-item__start-detail grey-bg"></span>
+       <span className="mdc-list-item__text">
+         Two-line item
+         <span className="mdc-list-item__text__secondary">Secondary text</span>
+       </span>
+     </li>
+     <li className="mdc-list-item">
+       <span className="mdc-list-item__start-detail grey-bg"></span>
+       <span className="mdc-list-item__text">
+         Two-line item
+         <span className="mdc-list-item__text__secondary">Secondary text</span>
+       </span>
+     </li>
+             </ul>
+
+
+
+
+
+
+
+
+      <header className="player-controls mdc-toolbar mdc-toolbar--theme-dark-FFF">
+            <div className="  mdc-toolbar__row">
               <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <ReactPlayer url={Player.active ? Player.active.permalink_url : ''} ref={reactplayer => { this.reactplayer = reactplayer }}
-                  className='react-player'
-                  width='36px'
-                  height='36px'
-                  playing={playing}
-                 playbackRate={playbackRate}
-                  volume={volume}
-             
-//               onReady={() => console.log('onReady')}
-//               onStart={() => console.log('onStart')}
-              onPlay={() => this.setState({ playing: true })}
-              onPause={() => this.setState({ playing: false })}
-              onBuffer={() => console.log('onBuffer')}
-              onEnded={() => this.setState({ playing: false })}
-              onError={e => console.log('onError', e)}
-//               onProgress={this.onProgress}
-//               onDuration={duration => this.setState({ duration })}
-              soundcloudConfig={{clientId}}
-              />
+
                 <div className="meta-wrapper">
                   <h1 className="mdc-typography--title trackTitle">{Player.active.title}</h1>
                   <h1 className="mdc-typography--caption trackUser">{Player.active.subtitle}</h1>
                 </div>
               </section>
-              <section className="mdc-toolbar__section mdc-toolbar__section--align-end player-controls" role="toolbar">
+              <section className="mdc-toolbar__section mdc-toolbar__section--align-end player-controls-buttons" role="toolbar">
                 <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-back" aria-label="Download" alt="Download">fast_rewind</button>
                   {
                     !this.state.playing &&
@@ -151,12 +282,14 @@ const Player = observer(class Player extends React.Component {
                     <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-pause" aria-label="Pause" alt="Pause" onClick={this.playPause} >pause</button>
                   }
                 <button className="material-icons mdc-toolbar__icon mdc-button mdc-button--raised mdc-button--accent player-button-next" aria-label="Bookmark this page" alt="Bookmark this page">fast_forward</button>
-      
+
               </section>
             </div>
           </header>
+          </div>
+
       )
-    
+
     }
 
   }

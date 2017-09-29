@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #e2e2e2;
+  /*background: #e2e2e2;*/
 }
 
 .feed {
@@ -12,18 +12,15 @@
   margin-top: 16px;
 }
 
-
 .feed .mdc-card {
   margin: 0 16px 24px 16px;
   position: relative;
   /*   background-color: var(--mdc-theme-primary); */
   /*   background-color: white; */
-    width: 290px;
+  width: 290px;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-
 
 @media (min-width: 766px) {
   .feed {
@@ -53,7 +50,6 @@
   }
 }
 
-
 .card-cover .card-image {
   position: absolute;
   top: 0;
@@ -75,6 +71,18 @@
 .demo-card--with-avatar .mdc-card__primary {
   position: relative;
   padding: 16px;
+  background: rgba(255, 255, 255, 0.90);
+  display: flex;
+  flex-direction: row;
+  color: black;
+}
+
+.mdc-card__avatar__icon{
+  display: flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 .demo-card--with-avatar .demo-card__avatar {
@@ -85,9 +93,9 @@
   border-radius: 50%;
 }
 
-.demo-card--with-avatar .mdc-card__title,
-.demo-card--with-avatar .mdc-card__subtitle {
-  margin-left: 56px;
+.demo-card--with-avatar .mdc-card__title, .demo-card--with-avatar .mdc-card__subtitle {
+  margin-left: 16px;
+  color: inherit;
 }
 
 .demo-card__16-9-media {
@@ -101,18 +109,18 @@
   width: 100%;
 }
 
-.soundcloud {
+.soundcloud_FFF {
   background-color: #ff3300;
 }
 
-.soundcloud2 {
+.soundcloud2_FFF {
   background-color: #ff8800;
 }
 
-.youtube {
+.youtube_FFF {
   background-color: #cd201f;
 }
 
-.eventbrite {
+.eventbrite_FFF {
   background-color: #ff8000;
 }

@@ -50,7 +50,6 @@ const scUserDataURI = `https://api.soundcloud.com/users/${config.username}${clie
 
 let tracks = map({})
 let profile = map({})
-window.tracks = tracks
 
 class SoundcloudStore {
 
@@ -71,7 +70,7 @@ class SoundcloudStore {
     this.database = firebase.database();
     this.storage = firebase.storage();
     this.ref = firebase.database().ref('addons/Soundcloud')
-    this.tracksRef = firebase.database().ref('addons/Soundcloud/tracks')
+    this.tracksRef = firebase.database().ref('posts')
 
 
     this.tracksRef.on('value', (snap) => {
@@ -84,8 +83,8 @@ class SoundcloudStore {
     })
 
 
-    console.log('this.fetchAll')
-    this.fetchAll();
+    // console.log('this.fetchAll')
+    //this.fetchAll();
 
   }
 
@@ -132,7 +131,8 @@ get tracks() {
               title: data.title,
               subtitle: data.user.username,
               cover: cover,
-              created_at
+              created_at,
+              type:'soundcloud'
 
             };
 

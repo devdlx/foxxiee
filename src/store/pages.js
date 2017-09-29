@@ -1,20 +1,15 @@
 /* eslint-disable */
-import {
-  extendObservable,
-  computed,
-  toJS,
-  observable,
-  runInAction
-} from 'mobx';
-const {
-  map
-} = observable;
+import {extendObservable, computed, toJS, observable, runInAction} from 'mobx';
+const {map} = observable;
 
 const pages = map({})
 
 class PagesStore {
+  waiting = true
 
   constructor(firebase) {
+
+    extendObservable(this, {waiting: this.waiting})
 
     this.firebase = firebase;
     this.auth = firebase.auth();
@@ -23,7 +18,10 @@ class PagesStore {
     // Initiates Firebase auth and listen to auth state changes.
 
     this.pagesRef.on('value', (_child) => {
-      pages.replace(_child.val())
+      runInAction(() => {
+        pages.replace(_child.val())
+        this.waiting = false
+      })
     })
 
   }
@@ -31,34 +29,49 @@ class PagesStore {
   get pages() {
     return pages
   }
-  
+
   page(pageKey) {
-    console.log(pages.has(pageKey), pages[pageKey])
-    return pages
+    // console.log(pages.keys());
+    // console.log(pageKey, pages.has(pageKey), pages.get(pageKey))
+    let page_ = {
+      posts: {
+        keys: []
+      }
+    }
+    if (pages.has(pageKey)) {
+      page_ = pages.get(pageKey)
+    }
+
+    // console.log(Object.keys(page_.posts))
+    console.log(page_.posts);
+    // page_.posts = Object.keys(page_.posts)
+    // console.log(page_);
+    return {...pages.get(pageKey), posts: Object.keys(page_.posts)}
+    // return {posts:{keys:[]}};
   }
 
-  updatePage(item, pageKey, added) {
+  updatePage(item, pageKey, added, itemPagePath_) {
 
-    console.log(item, pageKey, added)
+    // console.log(item, pageKey, added)
 
-    const pageItemPath = "/pages/"+pageKey+"/posts/" + item.id
-    const itemPagePath = "/addons/Soundcloud/tracks/" + item.id + "/pages/" + pageKey
+    const pageItemPath = "/pages/" + pageKey + "/posts/" + item.id
+    const itemPagePath = "/posts/" + item.id + "/pages/" + pageKey
 
     var updates = {};
-    updates[pageItemPath] = added;
-    updates[itemPagePath] = added;
+    updates[pageItemPath] = added
+      ? true
+      : null;
+    updates[itemPagePath] = added
+      ? true
+      : null;
     // console.log(updates);
     this.firebase.database().ref().update(updates).then(() => {
       // console.log('it did it but it be trippn bro');
     });
   }
 
-
-
   update = (id, data) => {
-    this.pagesRef.update({
-      [id]: data
-    })
+    this.pagesRef.update({[id]: data})
   }
 
   del = (id) => {

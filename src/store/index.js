@@ -3,12 +3,13 @@ import {
   extendObservable,
   computed,
   map,
-  toJS
+  toJS,
+  observable
 } from 'mobx'
 
-import MobxFirebaseStore from 'mobx-firebase-store';
+
 import {observer} from 'mobx-react';
-import {createAutoSubscriber} from 'firebase-nest';
+
 
 
 import firebase from 'firebase'
@@ -17,7 +18,9 @@ import PlayerStore from './player'
 import StorageStore from './storage'
 import UserStore from './user'
 import PagesStore from './pages'
+import PostsStore from './posts'
 import SoundcloudStore from './soundcloud'
+import YoutubeStore from './youtube'
 
 
 
@@ -38,23 +41,34 @@ const settings = firebase.database().ref('settings')
 
 
 const User = new UserStore(firebase)
-const Pages = new PagesStore(firebase);
+const pages = new PagesStore(firebase)
+const posts = new PostsStore(firebase)
 const Uploads = new StorageStore(firebase)
 const Player = new PlayerStore(firebase)
 const soundcloud = new SoundcloudStore(firebase)
+const youtube = new YoutubeStore(firebase)
+
 // window.soundcloud = soundcloud
-
-
-
 
 
 // const soundcloud = new MobxFirebaseStore(firebase.database(app).ref('addons/Soundcloud'));
 
+//
+// var splash = observable({
+//     loaded: false
+// });
+
+
+
+
 
 export {
   User,
-  Pages,
+  pages,
+  posts,
   Uploads,
   Player,
-  soundcloud
+  soundcloud,
+  youtube
+
 };

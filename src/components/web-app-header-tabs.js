@@ -17,7 +17,7 @@ import './web-app-header-tabs.css'
 
 export default class WebAppHeaderTabs extends PureComponent {
   state = {
-    
+
   }
 
 
@@ -35,22 +35,17 @@ export default class WebAppHeaderTabs extends PureComponent {
 
   render() {
     return (
-     
+
     <nav id="basic-tab-bar" className="mdc-tab-bar" ref={(tabs) => {this.tabRef = tabs}}>
-      <NavLink exact activeClassName="mdc-tab--active"  className="mdc-tab" to="/pages/music">Music</NavLink>
-      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/pages/videos">Videos</NavLink>
-      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/pages/events">Events</NavLink>
-      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/pages/contact">Contact</NavLink>
+      <NavLink exact activeClassName="mdc-tab--active"  className="mdc-tab" to="/music">Music</NavLink>
+      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/videos">Videos</NavLink>
+      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/events">Events</NavLink>
+      <NavLink exact activeClassName="mdc-tab--active" className="mdc-tab" to="/contact">Contact</NavLink>
 
        <span className="mdc-tab-bar__indicator"></span>
     </nav>
 
-      
+
     );
   }
 }
-
-
-
-
-
