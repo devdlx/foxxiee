@@ -1,13 +1,6 @@
 .player {
   display: flex;
   position: fixed;
-  /*--mdc-theme-accent: #FBC02D;*/
-  --mdc-theme-accent: #d60000;
-  --mdc-theme-primary: rgb(31, 31, 31);
-  --mdc-theme-secondary: rgb(31, 31, 31);
-  --mdc-theme-text-primary-on-background: white;
-  --mdc-theme-text-secondary-on-background: white;
-  background-color: var(--mdc-theme-primary);
 }
 
 .player-container {
@@ -47,7 +40,7 @@
 }
 
 .player-controls {
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   left: 0;
   /*   right: 0; */
@@ -96,39 +89,44 @@ button.material-icons.mdc-toolbar__icon.mdc-button.mdc-button {
   height: 30px;
 }
 
-.player-dialog {
-  z-index: 5;
-  visibility: visible;
-
+.mdc-player {
+  /*width: 100%;*/
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
 }
 
-.player-dialog .mdc-dialog__surface{
-  /*height: 100%;*/
-  /*width: 100%;*/
-  border-radius: 0;
-  /*transform: translateY(75vh);*/
-  transform: bottom(0);
-
+.mdc-player .mdc-player__compact {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  transform: top(0);
   opacity: 1;
   /*height: 180px;*/
+  position: absolute;
+  bottom: 0;
+  left: 6vw;
+  right: 6vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+  /*background-color: black;*/
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.player-dialog .mdc-dialog__surface .mdc-dialog__footer{
-  position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
+.mdc-player .player-controls {
+  /*background-color: rgba(255, 255, 255, 0.06)*/
 }
 
-.player-dialog .mdc-dialog__header{
-  display: none;
+.mdc-player .player-controls .mdc-toolbar__row {
+  min-height: 100%;
 }
 
-
-
-
-.player-container2 {
-    height: 91px;
-    width: 161px;
-    display: flex;
+.mdc-button--raised {
+    color: white;
+    background: #1d1d1d;
 }

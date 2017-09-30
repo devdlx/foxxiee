@@ -25,8 +25,6 @@ const DialogFull = observer(class DialogFull extends PureComponent {
   }
 
   componentDidMount() {
-    const dialog = new MDCDialog(this.dialogRef)
-    this.dialog = dialog
     this.player = store.Player
   // console.log(store.Player.loadAllTracks())
   store.Player.loadAllTracks()
@@ -115,15 +113,9 @@ const DialogFull = observer(class DialogFull extends PureComponent {
     const {Player} = store
 
     return (
-      <aside id="mdc-dialog-with-list" className="mdc-dialog dialog-full player-dialog" role="alertdialog" aria-labelledby="mdc-dialog-with-list-label" aria-describedby="mdc-dialog-with-list-description" ref={(dialog) => {
-        this.dialogRef = dialog
-      }}>
-        <div className="mdc-dialog__surface">
-          <header className="mdc-dialog__header">
-            <h2 id="mdc-dialog-with-list-label" className="mdc-dialog__header__title">
-              {this.props.title}
-            </h2>
-          </header>
+      <aside id="mdc-player" className="mdc-player" role="alertdialog" aria-labelledby="mdc-dialog-with-list-label" aria-describedby="mdc-dialog-with-list-description">
+        <div className="mdc-player__compact">
+
 
           <div className="player-container" >
           <ReactPlayer url={"https://www.youtube.com/watch?v=ouNeYI1lHh0"} ref={reactplayer => { this.reactplayer = reactplayer }}
@@ -148,8 +140,9 @@ const DialogFull = observer(class DialogFull extends PureComponent {
           />
           </div>
 
-          <section id="mdc-dialog-with-list-description" className="mdc-dialog__body mdc-dialog__body--scrollable"></section>
-          <footer className="mdc-dialog__footer">
+
+
+
 
           <header className="player-controls mdc-toolbar mdc-toolbar--theme-dark-FFF">
                 <div className="  mdc-toolbar__row">
@@ -177,10 +170,13 @@ const DialogFull = observer(class DialogFull extends PureComponent {
               </header>
 
 
-            <button type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Close</button>
-          </footer>
+
+
         </div>
-        <div className="mdc-dialog__backdrop"></div>
+
+
+        <section id="mdc-dialog-with-list-description" className="mdc-dialog__body mdc-dialog__body--scrollable"></section>
+
       </aside>
     );
   }

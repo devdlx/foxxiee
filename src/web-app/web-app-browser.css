@@ -46,7 +46,8 @@ a {
 }
 
 .page.web-app-browser main {
-  padding-bottom: 72px;
+  padding-bottom: 96px;
+  /*padding-bottom: 240px;*/
 }
 
 .mdc-button {
