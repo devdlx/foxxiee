@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   /*background: #e2e2e2;*/
+  width: 100vw;
 }
 
 .feed {
@@ -24,7 +25,7 @@
 
 @media (min-width: 766px) {
   .feed {
-    width: 760px;
+    /*width: 760px;*/
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -35,18 +36,18 @@
 
 @media (min-width: 1024px) {
   .feed {
-    width: 760px;
+    /*width: 760px;*/
     flex-direction: row;
     flex-wrap: wrap;
   }
   .feed .mdc-card {
-    width: 348px;
+    width: 300px;
   }
 }
 
 @media (max-width: 766px) {
   .feed .mdc-card {
-    width: 380px;
+    /*width: 380px;*/
   }
 }
 
@@ -77,12 +78,12 @@
   color: black;
 }
 
-.mdc-card__avatar__icon{
+.mdc-card__avatar__icon {
   display: flex;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
 }
 
 .demo-card--with-avatar .demo-card__avatar {
@@ -123,4 +124,19 @@
 
 .eventbrite_FFF {
   background-color: #ff8000;
+}
+
+@media (max-width:480px) {
+  .page-feed .header {
+    height: 100vw;
+    width: 100vw;
+    background-image: url(https://i3.sndcdn.com/avatars-000300901237-63o5oa-t500x500.jpg);
+    background-size: 100vw 100vw;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+  .feed {
+    margin: 0;
+  }
 }

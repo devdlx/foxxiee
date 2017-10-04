@@ -16,6 +16,7 @@
   display: flex;
   --mdc-theme-primary: #212121;
   --mdc-theme-accent: #64dd17;
+  --mdc-theme-text-primary-on-primary: #ffffff;
 }
 
 body{

@@ -99,6 +99,7 @@ button.material-icons.mdc-toolbar__icon.mdc-button.mdc-button {
   left: 0;
   right: 0;
   z-index: 0;
+  transform: translate3d(0,0,0);
 }
 
 .mdc-player .mdc-player__compact {
@@ -129,4 +130,24 @@ button.material-icons.mdc-toolbar__icon.mdc-button.mdc-button {
 .mdc-button--raised {
     color: white;
     background: #1d1d1d;
+}
+
+
+
+@media (max-width:480px) {
+  .mdc-player .mdc-player__compact{
+    height: 64px;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+
+  .mdc-player .player-container{
+    position: absolute;
+    bottom: 64px;
+  }
+  #root{
+    padding-bottom: 100px;
+  }
+
 }

@@ -39,9 +39,14 @@ const CardFull = (props, type) => (
     {props.wide && <section className="mdc-card__media demo-card__16-9-media"></section>
 }
 
-    <img src={props.cover} className="card-image"/> {props.description && <section className="mdc-card__supporting-text">
+    <img src={props.cover} className="card-image"/>
+
+
+    {props.description && <section className="mdc-card__supporting-text">
       {props.description}
     </section>}
+
+
     {props.actions && <section className="mdc-card__actions">
       <button className="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
       <button className="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
@@ -105,7 +110,7 @@ const Feed = observer(class Feed extends PureComponent {
 
   }
 
-  renderHeading() {
+  renderHeadingOld() {
 
     return (
       <div>
@@ -120,6 +125,13 @@ const Feed = observer(class Feed extends PureComponent {
           </div>
         </MediaQuery>
       </div>
+    );
+  }
+
+  renderHeading() {
+
+    return (
+      <div className="header"></div>
     );
   }
 
@@ -163,5 +175,11 @@ const Feed = observer(class Feed extends PureComponent {
 // const FeedPage = observer(Feed)
 // export default FeedPage
 export default Feed
+
 // {this.state.youtube.map((video, i) => (<CardFull key={video.videoId} type="youtube" cover={video.thumbnails.high.url} title={video.title}/>))}
 // {postsKeys.map((postKey, i) => (<PostCard key={postKey} {...this.props}/>))}
+
+
+// <div className="headerMobile">
+//   <img src="https://i3.sndcdn.com/avatars-000300901237-63o5oa-t500x500.jpg" width="100%" alt="Ahkiki La Foxxiee’s avatar"/>
+// </div>
